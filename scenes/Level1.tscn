@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7sve2pqb0uqd"]
+
+[ext_resource type="PackedScene" uid="uid://d0xlpfjoa04ej" path="res://scenes/PlayerMario.tscn" id="1_hgup0"]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_hgup0")]
