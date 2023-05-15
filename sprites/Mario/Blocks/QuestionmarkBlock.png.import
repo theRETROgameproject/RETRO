@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsjcwo1ry24n"
-path="res://.godot/imported/tset.png-2109b19e849e1674163d9f02153451f0.ctex"
+uid="uid://cycqptfpqady1"
+path="res://.godot/imported/QuestionmarkBlock.png-fc557c11537660b9acb2edf70c4dda78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tset.png"
-dest_files=["res://.godot/imported/tset.png-2109b19e849e1674163d9f02153451f0.ctex"]
+source_file="res://sprites/Mario/Blocks/QuestionmarkBlock.png"
+dest_files=["res://.godot/imported/QuestionmarkBlock.png-fc557c11537660b9acb2edf70c4dda78.ctex"]
 
 [params]
 
