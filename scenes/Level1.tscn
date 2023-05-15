@@ -4,4 +4,4 @@
 
 [node name="Level 1" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_hgup0")]
+[node name="PlayerMario" parent="." instance=ExtResource("1_hgup0")]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=5 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Texture2D" uid="uid://dsjcwo1ry24n" path="res://sprites/tset.png" id="1_77agd"]
+[ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
 size = Vector2(996, 599)
@@ -8,6 +9,7 @@ size = Vector2(996, 599)
 [sub_resource type="SpriteFrames" id="SpriteFrames_d0wp1"]
 
 [node name="PlayerMario" type="CharacterBody2D"]
+script = ExtResource("1_eg0uh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
