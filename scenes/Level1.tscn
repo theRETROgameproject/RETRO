@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://7sve2pqb0uqd"]
+[gd_scene load_steps=5 format=3 uid="uid://7sve2pqb0uqd"]
 
 [ext_resource type="PackedScene" uid="uid://d0xlpfjoa04ej" path="res://scenes/PlayerMario.tscn" id="1_hgup0"]
+[ext_resource type="Texture2D" uid="uid://cycqptfpqady1" path="res://sprites/Mario/Blocks/QuestionmarkBlock.png" id="2_g23kt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lh8gb"]
+resource_name = "bloc"
+texture = ExtResource("2_g23kt")
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_g4dud"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_lh8gb")
 
 [node name="Level 1" type="Node2D"]
 
 [node name="PlayerMario" parent="." instance=ExtResource("1_hgup0")]
+position = Vector2(165, 92)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 3
+position = Vector2(-4, 0)
+tile_set = SubResource("TileSet_g4dud")
+collision_animatable = true
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(-2, 1, 0, -1, 1, 0, -65536, 1, 0, 196603, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 196602, 1, 0, 196601, 1, 0, 131079, 1, 0, 65543, 1, 0, 7, 1, 0, -65529, 1, 0, -131065, 1, 0, -196601, 1, 0, -262137, 1, 0, -327673, 1, 0, -65535, 1, 0, -65534, 1, 0, 196597, 1, 0, 196596, 1, 0, 196595, 1, 0, 131059, 1, 0, 65523, 1, 0, -13, 1, 0, -65549, 1, 0, -131085, 1, 0, -196621, 1, 0, -262157, 1, 0, -327693, 1, 0, -327692, 1, 0, -327691, 1, 0, -327690, 1, 0, -327689, 1, 0, -327688, 1, 0, 1114141, 1, 0, 1114140, 1, 0, 1114139, 1, 0, 1114138, 1, 0, 1114137, 1, 0, 1114136, 1, 0, 1114135, 1, 0, 1114134, 1, 0, 1114133, 1, 0, 1114132, 1, 0, 1114131, 1, 0, 1179666, 1, 0, 1179665, 1, 0, 1114129, 1, 0, 1114128, 1, 0, 1114130, 1, 0, 1114124, 1, 0, 1114123, 1, 0, 1114122, 1, 0, 1114121, 1, 0, 1114120, 1, 0, 1114119, 1, 0, 1114118, 1, 0, 1114117, 1, 0, 1114116, 1, 0, 1114115, 1, 0, 1114114, 1, 0, 1114113, 1, 0, 1114112, 1, 0, 1048576, 1, 0, 983040, 1, 0, 917504, 1, 0, 851968, 1, 0, 786432, 1, 0, 720896, 1, 0, 655360, 1, 0, 589824, 1, 0, 524288, 1, 0, 458752, 1, 0, 393216, 1, 0, 327680, 1, 0, 262144, 1, 0, 196608, 1, 0, 1048605, 1, 0, 983069, 1, 0, 917533, 1, 0, 851996, 1, 0, 786460, 1, 0, 720924, 1, 0, 655388, 1, 0, 589852, 1, 0, 524316, 1, 0, 458780, 1, 0, 458781, 1, 0, 393245, 1, 0, 327709, 1, 0, 262173, 1, 0, 196637, 1, 0, 131101, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0)
