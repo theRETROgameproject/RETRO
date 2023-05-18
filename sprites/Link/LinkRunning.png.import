@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj10n4hfvagt4"
-path="res://.godot/imported/Lunk.png-fc90ec98980b2efa75a4ef8370e4ddc7.ctex"
+uid="uid://bhobwf6py3oa6"
+path="res://.godot/imported/LinkRunning.png-0b4853f690f720db41618528a531b4a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Lunk.png"
-dest_files=["res://.godot/imported/Lunk.png-fc90ec98980b2efa75a4ef8370e4ddc7.ctex"]
+source_file="res://sprites/Link/LinkRunning.png"
+dest_files=["res://.godot/imported/LinkRunning.png-0b4853f690f720db41618528a531b4a3.ctex"]
 
 [params]
 

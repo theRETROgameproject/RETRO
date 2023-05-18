@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
-[ext_resource type="Texture2D" uid="uid://dj10n4hfvagt4" path="res://sprites/Lunk.png" id="2_dk8ar"]
+[ext_resource type="Texture2D" uid="uid://dsohg1om867im" path="res://sprites/Mario/Blocks/MarioBlume1.png" id="2_vq8xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
 size = Vector2(12, 16)
@@ -20,4 +20,4 @@ sprite_frames = SubResource("SpriteFrames_d0wp1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-texture = ExtResource("2_dk8ar")
+texture = ExtResource("2_vq8xq")
