@@ -1,23 +1,90 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=13 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
-[ext_resource type="Texture2D" uid="uid://dsohg1om867im" path="res://sprites/Mario/Blocks/MarioBlume1.png" id="2_vq8xq"]
+[ext_resource type="Texture2D" uid="uid://bhobwf6py3oa6" path="res://sprites/Link/LinkRunning.png" id="2_qt4yn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
-size = Vector2(12, 16)
+size = Vector2(9, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d0wp1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeync"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtqmr"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qr0x"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0r1w"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bk7t"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rj7f"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dspa"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkrxq"]
+atlas = ExtResource("2_qt4yn")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2fes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeync")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtqmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qr0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0r1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bk7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rj7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dspa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkrxq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bk7t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
 
 [node name="PlayerMario" type="CharacterBody2D"]
 script = ExtResource("1_eg0uh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_nbt20")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_d0wp1")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-texture = ExtResource("2_vq8xq")
+sprite_frames = SubResource("SpriteFrames_c2fes")
