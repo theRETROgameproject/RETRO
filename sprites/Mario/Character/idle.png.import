@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vrc1enj8q7d6"
-path="res://.godot/imported/GrasÜbergang45GradlinksKORRIGIERT!!!.png-d8cd12df34a5d28148171bdbe7449461.ctex"
+uid="uid://5xij644ns2hn"
+path="res://.godot/imported/idle.png-4b5a613c7af15975d0f5560d5f48959f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mario/Blocks/GrasÜbergang45GradlinksKORRIGIERT!!!.png"
-dest_files=["res://.godot/imported/GrasÜbergang45GradlinksKORRIGIERT!!!.png-d8cd12df34a5d28148171bdbe7449461.ctex"]
+source_file="res://sprites/Mario/Character/idle.png"
+dest_files=["res://.godot/imported/idle.png-4b5a613c7af15975d0f5560d5f48959f.ctex"]
 
 [params]
 

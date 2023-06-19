@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oyqhtcso5d8v"
-path="res://.godot/imported/GrasÜbergang45GradRechtsKORRIGIERT!!!.png-5853d91b59121dfdb7c17db90d68470a.ctex"
+uid="uid://xchtt40r2gkt"
+path="res://.godot/imported/util_spritesheet.png-10e2f4e4f2379c5bb69e7d6e700fb8e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mario/Blocks/GrasÜbergang45GradRechtsKORRIGIERT!!!.png"
-dest_files=["res://.godot/imported/GrasÜbergang45GradRechtsKORRIGIERT!!!.png-5853d91b59121dfdb7c17db90d68470a.ctex"]
+source_file="res://sprites/Mario/Blocks/util_spritesheet.png"
+dest_files=["res://.godot/imported/util_spritesheet.png-10e2f4e4f2379c5bb69e7d6e700fb8e8.ctex"]
 
 [params]
 

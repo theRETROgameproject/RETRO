@@ -12,4 +12,3 @@ func _process(delta):
 	
 	position.x = PlayerPosition[0]-PlayerVelocity[0]*0.2
 	position.y = PlayerPosition[1]-80+PlayerVelocity[1]*0.1
-	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddpawvcc17jxh"
-path="res://.godot/imported/Pilz Schaftverbundsstück Grün.png-4f10ff52b83c368b350f2fb46c9e0649.ctex"
+uid="uid://c1knoa1y07a3a"
+path="res://.godot/imported/background_spritesheet.png-c9ff31be19d02ebfd0b8fa16d09b7c9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mario/Blocks/Pilz Schaftverbundsstück Grün.png"
-dest_files=["res://.godot/imported/Pilz Schaftverbundsstück Grün.png-4f10ff52b83c368b350f2fb46c9e0649.ctex"]
+source_file="res://sprites/Mario/Blocks/background_spritesheet.png"
+dest_files=["res://.godot/imported/background_spritesheet.png-c9ff31be19d02ebfd0b8fa16d09b7c9f.ctex"]
 
 [params]
 
