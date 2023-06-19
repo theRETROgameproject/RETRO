@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1cp1ca7gt06m"
-path="res://.godot/imported/Pilz Rechts Grün.png-9eff9a907ccbfef25b3feac027a59b4f.ctex"
+uid="uid://cbsxij1qvblyq"
+path="res://.godot/imported/jump.png-75a3e4330187b0fdf00449c9f22d39c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mario/Blocks/Pilz Rechts Grün.png"
-dest_files=["res://.godot/imported/Pilz Rechts Grün.png-9eff9a907ccbfef25b3feac027a59b4f.ctex"]
+source_file="res://sprites/Mario/Character/jump.png"
+dest_files=["res://.godot/imported/jump.png-75a3e4330187b0fdf00449c9f22d39c1.ctex"]
 
 [params]
 

@@ -15,6 +15,12 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var VELX = 0
 	if not is_on_floor():
+		if direction > 0:
+			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.play("jump")
+		elif direction < 0:
+			$AnimatedSprite2D.flip_h = true
+			$AnimatedSprite2D.play("jump")
 		velocity.y += gravity * delta
 		if direction > 0 and velocity.x < VELX+70:
 			velocity.x += 10

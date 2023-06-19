@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6h7ma7i0aadl"
-path="res://.godot/imported/MarioHügelOben.png-b24df04f416a2905e7f0958b99232965.ctex"
+uid="uid://cgq8fk2b3j7rt"
+path="res://.godot/imported/run_spritesheet.png-3e1dbd3d054a1eeaa727cb03abc1a011.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Mario/Blocks/MarioHügelOben.png"
-dest_files=["res://.godot/imported/MarioHügelOben.png-b24df04f416a2905e7f0958b99232965.ctex"]
+source_file="res://sprites/Mario/Character/run_spritesheet.png"
+dest_files=["res://.godot/imported/run_spritesheet.png-3e1dbd3d054a1eeaa727cb03abc1a011.ctex"]
 
 [params]
 
