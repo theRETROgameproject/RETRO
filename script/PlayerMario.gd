@@ -44,7 +44,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("default")
 	elif is_on_floor():
-		velocity.x = velocity.x - FRICTION*1.5*velocity.x
+		velocity.x = velocity.x - FRICTION*1.8*velocity.x
 		$AnimatedSprite2D.play("idle")
 		if velocity.x < 0.1 and velocity.x > -0.1:
 			velocity.x = 0
