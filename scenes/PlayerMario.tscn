@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,17 +141,33 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 1.0
+"speed": 30.0
 }]
 
 [node name="PlayerMario" type="CharacterBody2D"]
 script = ExtResource("1_eg0uh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_nbt20")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_c2fes")
-animation = &"idle"
+animation = &"jump"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 3
+process_callback = 0
+limit_left = -144
+limit_bottom = 190
+limit_smoothed = true
+position_smoothing_speed = 60.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
+drag_left_margin = 0.42
+drag_top_margin = 0.5
+drag_right_margin = 0.42
+drag_bottom_margin = 0.5
+editor_draw_drag_margin = true
