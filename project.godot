@@ -23,6 +23,10 @@ window/size/viewport_height=864
 window/size/resizable=false
 window/stretch/scale=3.0
 
+[layer_names]
+
+2d_physics/layer_1="Welt"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3

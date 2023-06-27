@@ -1,5 +1,5 @@
 shader_type canvas_item;
-uniform float amplitude = 0.8;
+uniform float amplitude = 0.5;
 uniform float speed = 0.5;
 void vertex() {
 	if(UV.y <= 0.9){

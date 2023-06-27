@@ -10,8 +10,8 @@ const FRICTION = 0.13
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 func _physics_process(delta):
+	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var VELX = 0
 	if not is_on_floor():
@@ -50,3 +50,7 @@ func _physics_process(delta):
 			velocity.x = 0
 
 	move_and_slide()
+
+func _on_death_body_entered(body):
+	if body.name == "PlayerMario":
+		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
