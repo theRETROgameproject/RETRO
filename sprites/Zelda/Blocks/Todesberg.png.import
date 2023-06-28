@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hwrjoge2l58y"
-path="res://.godot/imported/EldenRing.png-08476b6c9f37b99bb166dc43416b5f1b.ctex"
+uid="uid://lay0hpg6or3l"
+path="res://.godot/imported/Todesberg.png-4fac1d17b5a346cc474884eeab125c4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Dark Souls/EldenRing.png"
-dest_files=["res://.godot/imported/EldenRing.png-08476b6c9f37b99bb166dc43416b5f1b.ctex"]
+source_file="res://sprites/Zelda/Blocks/Todesberg.png"
+dest_files=["res://.godot/imported/Todesberg.png-4fac1d17b5a346cc474884eeab125c4c.ctex"]
 
 [params]
 

@@ -160,8 +160,10 @@ animation = &"jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
+scale = Vector2(0.997173, 1.00956)
 process_callback = 0
 limit_left = -144
+limit_right = 4496
 limit_bottom = 190
 limit_smoothed = true
 position_smoothing_speed = 60.0
