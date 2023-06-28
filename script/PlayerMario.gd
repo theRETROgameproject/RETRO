@@ -8,6 +8,7 @@ const ACCELERATION_AIR = 800
 const FRICTION = 0.13
 var coins = 0
 var hit_flag = false
+var won_sound = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -32,23 +33,29 @@ func coin_collect():
 	var tilemap = get_parent().get_node("TileMap")
 	var data = gimmegimmegimmeyourblocks(0,1)
 	if data.a_coords == Vector2i(4,0) && data.s_id == 2:
+		$AudioStreamCoin.play()
 		tilemap.set_cell(1,data.coords,-1)
 		coins += 1
 		var coinlabel = get_parent().get_node("CanvasLayer/Label")
 		coinlabel.text = str("Coins: ", coins )
 	
 func flag():
-	var tilemap = get_parent().get_node("TileMap")
+	# var tilemap = get_parent().get_node("TileMap")
 	var data = gimmegimmegimmeyourblocks(0,1)
 	if (data.a_coords == Vector2i(7,1) && data.s_id == 2) || (data.a_coords == Vector2i(6,1) && data.s_id == 2):
 		hit_flag = true
+		$AudioStreamMusic.stop()
 		velocity.x = 0
 		velocity.y = 40
 	if is_on_floor() && hit_flag:
-		velocity.x = 100
+		if not won_sound:
+			$AudioStreamWon.play()
+			won_sound = true
+		velocity.x = 60
+		velocity.y = 200
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("default")
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(4).timeout
 		velocity.x = 0
 		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
 		
@@ -101,4 +108,6 @@ func _physics_process(delta):
 
 func _on_death_body_entered(body):
 	if body.name == "PlayerMario":
+		$AudioStreamDeath.play()
+		await get_tree().create_timer(4).timeout
 		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")

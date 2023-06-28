@@ -14,7 +14,8 @@ config/name="RETRO"
 config/description="RETRO Experience Turbo Remix Operation"
 run/main_scene="res://scenes/Level1.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+config/icon="res://icon.png"
 
 [display]
 
@@ -31,4 +32,4 @@ window/stretch/scale=3.0
 
 textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.372549, 0.588235, 1, 1)
+environment/defaults/default_clear_color=Color(0.411765, 0.717647, 1, 1)
