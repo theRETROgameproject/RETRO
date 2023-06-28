@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://buykkngrwgi8c"
+path="res://.godot/imported/RETRO Coin.ogg-478c04779f3601a81199e393b1a25eb3.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO Coin.ogg"
+dest_files=["res://.godot/imported/RETRO Coin.ogg-478c04779f3601a81199e393b1a25eb3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0
+beat_count=0
+bar_beats=4

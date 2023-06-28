@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dp51x54gwct0g"
+path="res://.godot/imported/RETRO Death.ogg-7bf1935b3a07e2b19689053ed9b84cc4.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO Death.ogg"
+dest_files=["res://.godot/imported/RETRO Death.ogg-7bf1935b3a07e2b19689053ed9b84cc4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

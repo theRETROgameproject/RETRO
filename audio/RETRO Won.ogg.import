@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tt73xuw68xng"
+path="res://.godot/imported/RETRO Won.ogg-cf65190e14537597f90e25e256779f5e.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO Won.ogg"
+dest_files=["res://.godot/imported/RETRO Won.ogg-cf65190e14537597f90e25e256779f5e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
