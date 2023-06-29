@@ -8,6 +8,7 @@ const ACCELERATION_AIR = 800
 const FRICTION = 0.13
 var coins = 0
 var hit_flag = false
+var dead = false
 var won_sound = false
 var slide_sound = false
 
@@ -70,7 +71,7 @@ func _physics_process(delta):
 	flag()
 	
 	var direction = 0
-	if !hit_flag:
+	if !hit_flag && !dead:
 		direction = Input.get_axis("ui_left", "ui_right")
 		
 		var VELX = 0
@@ -88,7 +89,7 @@ func _physics_process(delta):
 				velocity.x -= 10
 
 	# Handle Jump.
-		if Input.is_action_just_pressed("ui_accept"):# and is_on_floor():
+		if Input.is_action_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			VELX = velocity.x
 			$AudioStreamJump.play()
@@ -114,6 +115,20 @@ func _physics_process(delta):
 
 func _on_death_body_entered(body):
 	if body.name == "PlayerMario":
+		dead = true
 		$AudioStreamDeath.play()
-		await get_tree().create_timer(4).timeout
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		var c_pos = get_node("Camera2D").get_screen_center_position().y
+		get_node("Camera2D").set_limit(SIDE_BOTTOM,c_pos+143)
+		velocity.x = 0
+		velocity.y = -150
+		$AnimatedSprite2D.play("idle")
+		for i in range(30):
+			await get_tree().create_timer(0.1).timeout
+			velocity.y += gravity*0.02
+		
+		await get_tree().create_timer(1.2).timeout
 		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
