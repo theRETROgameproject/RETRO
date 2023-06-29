@@ -170,6 +170,7 @@ animation = &"jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
+position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.997173, 1.00956)
 process_callback = 0
 limit_left = -144
@@ -190,6 +191,7 @@ editor_draw_drag_margin = true
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_r0uby")
+offset_top = 216.0
 offset_right = 480.0
 offset_bottom = 288.0
 
