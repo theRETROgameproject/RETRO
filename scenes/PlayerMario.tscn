@@ -175,7 +175,6 @@ shape = SubResource("RectangleShape2D_nbt20")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_c2fes")
-animation = &"death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3

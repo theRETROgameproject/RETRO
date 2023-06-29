@@ -63,7 +63,7 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
-		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+		get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		
 func _physics_process(delta):
 	coinspawn()
