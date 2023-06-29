@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=31 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
 [ext_resource type="Texture2D" uid="uid://cgq8fk2b3j7rt" path="res://sprites/Mario/Character/run_spritesheet.png" id="2_k43vd"]
 [ext_resource type="Texture2D" uid="uid://5xij644ns2hn" path="res://sprites/Mario/Character/idle.png" id="3_n7j3w"]
 [ext_resource type="Texture2D" uid="uid://cbsxij1qvblyq" path="res://sprites/Mario/Character/jump.png" id="4_x72wv"]
+[ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
 [ext_resource type="AudioStream" uid="uid://buykkngrwgi8c" path="res://audio/RETRO Coin.ogg" id="5_coxds"]
 [ext_resource type="AudioStream" uid="uid://bxled1flu6xr0" path="res://audio/RETRO Overworld.ogg" id="6_o4isj"]
 [ext_resource type="AudioStream" uid="uid://dp51x54gwct0g" path="res://audio/RETRO Death.ogg" id="7_bdnu0"]
@@ -150,6 +151,9 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uby"]
+shader = ExtResource("5_22gtf")
+
 [node name="PlayerMario" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -166,6 +170,7 @@ animation = &"jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
+position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.997173, 1.00956)
 process_callback = 0
 limit_left = -144
@@ -181,6 +186,14 @@ drag_top_margin = 0.5
 drag_right_margin = 0.42
 drag_bottom_margin = 0.5
 editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_r0uby")
+offset_top = 216.0
+offset_right = 480.0
+offset_bottom = 288.0
 
 [node name="AudioStreamCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_coxds")
