@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65vpsdho24ov"
-path="res://.godot/imported/Himmel(Mario+Zelda).png-845382a3432cca6407e784e58e13873c.ctex"
+uid="uid://desykhv7q06pm"
+path="res://.godot/imported/Elden Ring - all Dragons mit Blitzen.png-2ba16057d9b0d9c2d2e164290950f7ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Himmel(Mario+Zelda).png"
-dest_files=["res://.godot/imported/Himmel(Mario+Zelda).png-845382a3432cca6407e784e58e13873c.ctex"]
+source_file="res://sprites/Dark Souls/Elden Ring - all Dragons mit Blitzen.png"
+dest_files=["res://.godot/imported/Elden Ring - all Dragons mit Blitzen.png-2ba16057d9b0d9c2d2e164290950f7ba.ctex"]
 
 [params]
 
