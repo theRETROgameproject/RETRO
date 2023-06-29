@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://dy3bx6ujergbe"]
+[gd_scene load_steps=29 format=3 uid="uid://dy3bx6ujergbe"]
 
+[ext_resource type="Shader" path="res://scenes/Level1.gdshader" id="1_1b8pi"]
 [ext_resource type="PackedScene" uid="uid://d0xlpfjoa04ej" path="res://scenes/PlayerMario.tscn" id="1_hgup0"]
 [ext_resource type="Shader" path="res://scenes/Wind.gdshader" id="2_x4sth"]
 [ext_resource type="Texture2D" uid="uid://c1knoa1y07a3a" path="res://sprites/Mario/Blocks/background_spritesheet.png" id="3_aelbq"]
@@ -10,6 +11,9 @@
 [ext_resource type="Shader" path="res://scenes/Flag.gdshader" id="7_a46l8"]
 [ext_resource type="Script" path="res://scenes/Spikes.gd" id="8_3ih5d"]
 [ext_resource type="Script" path="res://scenes/TileMap.gd" id="8_dqog0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe4ke"]
+shader = ExtResource("1_1b8pi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcvxx"]
 shader = ExtResource("3_cj5q2")
@@ -804,6 +808,7 @@ size = Vector2(32, 15)
 
 [node name="Level1" type="Node2D"]
 texture_filter = 3
+material = SubResource("ShaderMaterial_xe4ke")
 
 [node name="PlayerMario" parent="." instance=ExtResource("1_hgup0")]
 z_index = 1
