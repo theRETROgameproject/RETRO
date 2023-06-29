@@ -116,6 +116,7 @@ func _physics_process(delta):
 func _on_death_body_entered(body):
 	if body.name == "PlayerMario":
 		dead = true
+		$AudioStreamMusic.stop()
 		$AudioStreamDeath.play()
 		set_collision_layer_value(1,false)
 		set_collision_layer_value(2,false)
@@ -127,8 +128,7 @@ func _on_death_body_entered(body):
 		velocity.y = -150
 		$AnimatedSprite2D.play("idle")
 		for i in range(30):
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
-		
-		await get_tree().create_timer(1.2).timeout
+			
 		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
