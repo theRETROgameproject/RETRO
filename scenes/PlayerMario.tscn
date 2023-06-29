@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=29 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
 [ext_resource type="Texture2D" uid="uid://cgq8fk2b3j7rt" path="res://sprites/Mario/Character/run_spritesheet.png" id="2_k43vd"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bxled1flu6xr0" path="res://audio/RETRO Overworld.ogg" id="6_o4isj"]
 [ext_resource type="AudioStream" uid="uid://dp51x54gwct0g" path="res://audio/RETRO Death.ogg" id="7_bdnu0"]
 [ext_resource type="AudioStream" uid="uid://tt73xuw68xng" path="res://audio/RETRO Won.ogg" id="8_lr1xg"]
+[ext_resource type="AudioStream" uid="uid://b5u8hd7nu48k1" path="res://audio/RETRO Jump.ogg" id="9_dkh5l"]
+[ext_resource type="AudioStream" uid="uid://rfbbxblil5o2" path="res://audio/RETRO Slide.ogg" id="10_ld7xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
 size = Vector2(9, 16)
@@ -185,7 +187,7 @@ stream = ExtResource("5_coxds")
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_o4isj")
-volume_db = -4.0
+volume_db = -10.0
 autoplay = true
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
@@ -193,3 +195,10 @@ stream = ExtResource("7_bdnu0")
 
 [node name="AudioStreamWon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_lr1xg")
+
+[node name="AudioStreamJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dkh5l")
+volume_db = 12.0
+
+[node name="AudioStreamSlide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ld7xg")

@@ -10,6 +10,7 @@ var coins = 0
 var hit_flag = false
 var dead = false
 var won_sound = false
+var slide_sound = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -45,11 +46,15 @@ func flag():
 	var data = gimmegimmegimmeyourblocks(0,1)
 	if (data.a_coords == Vector2i(7,1) && data.s_id == 2) || (data.a_coords == Vector2i(6,1) && data.s_id == 2):
 		hit_flag = true
-		$AudioStreamMusic.stop()
+		if not slide_sound:
+			$AudioStreamMusic.stop()
+			$AudioStreamSlide.play()
+			slide_sound = true
 		velocity.x = 0
-		velocity.y = 40
+		velocity.y = 50
 	if is_on_floor() && hit_flag:
 		if not won_sound:
+			$AudioStreamSlide.stop()
 			$AudioStreamWon.play()
 			won_sound = true
 		velocity.x = 60
@@ -87,6 +92,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			VELX = velocity.x
+			$AudioStreamJump.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
