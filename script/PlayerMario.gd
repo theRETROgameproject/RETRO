@@ -126,7 +126,7 @@ func _on_death_body_entered(body):
 		get_node("Camera2D").set_limit(SIDE_BOTTOM,c_pos+143)
 		velocity.x = 0
 		velocity.y = -150
-		$AnimatedSprite2D.play("idle")
+		$AnimatedSprite2D.play("death")
 		for i in range(30):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02

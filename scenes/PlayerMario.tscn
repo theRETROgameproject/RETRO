@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=32 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
+[ext_resource type="Texture2D" uid="uid://7txa1gi6iqo0" path="res://sprites/Mario/Character/Mario_death.png" id="2_7hqik"]
 [ext_resource type="Texture2D" uid="uid://cgq8fk2b3j7rt" path="res://sprites/Mario/Character/run_spritesheet.png" id="2_k43vd"]
 [ext_resource type="Texture2D" uid="uid://5xij644ns2hn" path="res://sprites/Mario/Character/idle.png" id="3_n7j3w"]
 [ext_resource type="Texture2D" uid="uid://cbsxij1qvblyq" path="res://sprites/Mario/Character/jump.png" id="4_x72wv"]
@@ -81,6 +82,14 @@ region = Rect2(240, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c2fes"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7hqik")
+}],
+"loop": true,
+"name": &"death",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nn7sy")
@@ -166,7 +175,7 @@ shape = SubResource("RectangleShape2D_nbt20")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_c2fes")
-animation = &"jump"
+animation = &"death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
