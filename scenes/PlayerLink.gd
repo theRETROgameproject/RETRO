@@ -94,9 +94,13 @@ func _on_dungeon_body_entered(body):
 	if body.name == "PlayerLink":
 		get_node("Camera2D/Draußen").visible = false
 		get_node("Camera2D/Dungeon").visible = true
+		$AudioStreamMusic.stop()
+		$AudioStreamDungeon.play()
 
 
 func _on_dungeon_body_exited(body):
 	if body.name == "PlayerLink":
 		get_node("Camera2D/Draußen").visible = true
 		get_node("Camera2D/Dungeon").visible = false
+		$AudioStreamDungeon.stop()
+		$AudioStreamMusic.play()
