@@ -8,8 +8,30 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var startpos = position.x
 
+func gimmegimmegimmeyourblocks(w,layer):
+	var tilemap = get_parent().get_parent().get_node("TileMap")
+	var tilemapcoords = tilemap.local_to_map(global_position)
+	tilemapcoords.x -= w
+	var atlascoords = tilemap.get_cell_atlas_coords(layer,tilemapcoords)
+	var source_id = tilemap.get_cell_source_id(layer,tilemapcoords)
+	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
+	
+
 func _physics_process(delta):
 	
+	var left = gimmegimmegimmeyourblocks(-1,0)
+	var right = gimmegimmegimmeyourblocks(1,0)
+	
+	if is_on_floor() and velocity.x ==0:
+		if left.s_id != -1:
+			velocity.y = -300
+			await get_tree().create_timer(0.05).timeout
+			velocity.x = 20
+		if right.s_id != -1:
+			velocity.y = -300
+			await get_tree().create_timer(0.05).timeout
+			velocity.x = -20
+			
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
@@ -18,8 +40,10 @@ func _physics_process(delta):
 	var deltaXStart = position.x-startpos
 	if deltaXPlayer > 5 && deltaXPlayer < 150:
 		velocity.x = -50
+		
 	elif deltaXPlayer < -5 && deltaXPlayer > -150: 
 		velocity.x = 50
+		
 	else:
 		if deltaXStart > 20:
 			velocity.x = -20

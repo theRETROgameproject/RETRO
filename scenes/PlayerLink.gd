@@ -10,16 +10,41 @@ var start = true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func gimmegimmegimmeyourblocks(h,layer):
+func enemy():
+	var enemy = get_parent().get_child(2).get_children()
+	for e in enemy:
+		var deltaX = e.position.x-position.x
+		var deltaY = sqrt(pow(e.position.y-position.y,2.0))
+		var heading = $AnimatedSprite2D.flip_h
+		print(deltaY)
+		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
+			if Input.is_key_pressed(KEY_V):		
+				e.queue_free()	
+		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 20:
+			if Input.is_key_pressed(KEY_V):	
+				e.queue_free()
+		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
+			get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+				
+				
+	
+func gimmegimmegimmeyourblocks(w,layer):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(global_position)
-	tilemapcoords.y -= h
+	tilemapcoords.x -= w
 	var atlascoords = tilemap.get_cell_atlas_coords(layer,tilemapcoords)
 	var source_id = tilemap.get_cell_source_id(layer,tilemapcoords)
 	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
 	
 			
 func _physics_process(delta):
+	
+	var attack = Input.is_key_pressed(KEY_V)
+	if attack:
+		$AnimatedSprite2D.play("attack")
+		
+	enemy()
+	
 	if start:
 		velocity.x = 100
 		$AnimatedSprite2D.play("default")
@@ -30,12 +55,6 @@ func _physics_process(delta):
 		
 		var VELX = 0
 		if not is_on_floor():
-			if direction >= 0:
-				$AnimatedSprite2D.flip_h = false
-				$AnimatedSprite2D.play("jump")
-			elif direction <= 0:
-				$AnimatedSprite2D.flip_h = true
-				$AnimatedSprite2D.play("jump")
 			velocity.y += gravity * delta
 			if direction > 0 and velocity.x < VELX+70:
 				velocity.x += 10
@@ -52,16 +71,19 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 		if direction > 0 and is_on_floor():
-			$AnimatedSprite2D.flip_h = false
-			$AnimatedSprite2D.play("default")
+			if !attack:
+				$AnimatedSprite2D.flip_h = false
+				$AnimatedSprite2D.play("default")
 			velocity.x = ACCELERATION*delta + velocity.x - FRICTION*velocity.x
 		elif direction < 0 and is_on_floor():
 			velocity.x = -ACCELERATION*delta + velocity.x - FRICTION*velocity.x
-			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("default")
+			if !attack:
+				$AnimatedSprite2D.flip_h = true
+				$AnimatedSprite2D.play("default")
 		elif is_on_floor():
 			velocity.x = velocity.x - FRICTION*1.8*velocity.x
-			$AnimatedSprite2D.play("idle")
+			if !attack:
+				$AnimatedSprite2D.play("idle")
 			if velocity.x < 0.1 and velocity.x > -0.1:
 				velocity.x = 0
 
