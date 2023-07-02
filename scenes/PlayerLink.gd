@@ -16,7 +16,6 @@ func enemy():
 		var deltaX = e.position.x-position.x
 		var deltaY = sqrt(pow(e.position.y-position.y,2.0))
 		var heading = $AnimatedSprite2D.flip_h
-		print(deltaY)
 		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
 			if Input.is_key_pressed(KEY_V):		
 				e.queue_free()	
