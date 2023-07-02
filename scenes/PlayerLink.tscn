@@ -190,7 +190,9 @@ offset_bottom = 288.0
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_acc3w")
+volume_db = -10.0
 autoplay = true
 
 [node name="AudioStreamDungeon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_d3p28")
+volume_db = -10.0
