@@ -23,7 +23,7 @@ func enemy():
 			if Input.is_key_pressed(KEY_V):	
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
-			get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 				
 				
 	
