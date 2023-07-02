@@ -32,15 +32,14 @@ func coinspawn():
 		data.coords.y -= 1
 		tilemap.set_cell(1,data.coords,2,Vector2(4,0))
 		
-func coin_collect():	
+func coin_collect():
 	var tilemap = get_parent().get_node("TileMap")
 	var data = gimmegimmegimmeyourblocks(0,1)
 	if data.a_coords == Vector2i(4,0) && data.s_id == 2:
 		$AudioStreamCoin.play()
 		tilemap.set_cell(1,data.coords,-1)
-		coins += 1
-		var coinlabel = get_parent().get_node("CanvasLayer/Label")
-		coinlabel.text = str("Coins: ", coins )
+		print("test")
+		get_parent().get_parent().cointer()
 	
 func flag():
 	# var tilemap = get_parent().get_node("TileMap")
@@ -64,7 +63,7 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
-		get_tree().change_scene_to_file("res://scenes/Level2.tscn")
+		get_parent().get_parent().level2()
 		
 func _physics_process(delta):
 	coinspawn()

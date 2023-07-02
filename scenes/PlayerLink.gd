@@ -34,7 +34,6 @@ func gimmegimmegimmeyourblocks(w,layer):
 	var atlascoords = tilemap.get_cell_atlas_coords(layer,tilemapcoords)
 	var source_id = tilemap.get_cell_source_id(layer,tilemapcoords)
 	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
-	
 			
 func _physics_process(delta):
 	
