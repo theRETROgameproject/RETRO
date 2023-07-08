@@ -23,7 +23,7 @@ func enemy():
 			if Input.is_key_pressed(KEY_V):	
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
-			get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 				
 				
 	
@@ -38,9 +38,12 @@ func gimmegimmegimmeyourblocks(w,layer):
 			
 func _physics_process(delta):
 	
-	var attack = Input.is_key_pressed(KEY_V)
+	var attack = Input.is_action_pressed("attack_btn")
 	if attack:
+		$AudioStreamSword.play()
 		$AnimatedSprite2D.play("attack")
+
+		
 		
 	enemy()
 	
@@ -64,6 +67,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			VELX = velocity.x
+			$AudioStreamJump.play()
 		
 
 	# Get the input direction and handle the movement/deceleration.

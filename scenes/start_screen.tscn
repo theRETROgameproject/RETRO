@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Button.gd" id="1_vw774"]
 
-[node name="Death Screen" type="Node2D"]
+[node name="Start Screen" type="Node2D"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 480.0
@@ -13,7 +13,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "GAME OVER"
+text = "Press Button to play"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
@@ -21,7 +21,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-text = "Restart"
+text = "Start"
 script = ExtResource("1_vw774")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/Button" to="PanelContainer/VBoxContainer/CenterContainer/Button" method="_on_pressed"]
