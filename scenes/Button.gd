@@ -2,4 +2,5 @@ extends Button
 
 
 func _on_pressed():
-	get_parent().get_parent().get_parent().get_parent().get_parent().init_level1()
+	get_tree().root.get_child(0).init_level1()
+	print("lal")

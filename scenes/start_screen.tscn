@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Button.gd" id="1_vw774"]
 
-[node name="Death Screen" type="Node2D"]
+[node name="Start Screen" type="Node2D"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 480.0
