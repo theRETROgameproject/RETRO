@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8yl0ku1kr3mx"]
+[gd_scene load_steps=32 format=3 uid="uid://c8yl0ku1kr3mx"]
 
 [ext_resource type="Script" path="res://scenes/PlayerLink.gd" id="1_udd1f"]
 [ext_resource type="Texture2D" uid="uid://b7xs4acxivpl6" path="res://sprites/Zelda/Link/LinkAngriff.png" id="2_adko4"]
@@ -7,6 +7,11 @@
 [ext_resource type="Shader" path="res://scenes/Dungeon.gdshader" id="5_ama3h"]
 [ext_resource type="AudioStream" uid="uid://cony5w4nvm2wg" path="res://audio/RETRO Heroic.ogg" id="6_acc3w"]
 [ext_resource type="AudioStream" uid="uid://1ov56m4vd5ei" path="res://audio/RETRO Dungeon.ogg" id="7_d3p28"]
+[ext_resource type="AudioStream" uid="uid://b5u8hd7nu48k1" path="res://audio/RETRO Jump.ogg" id="8_66tn1"]
+[ext_resource type="AudioStream" uid="uid://cwx7xn0fmh6qn" path="res://audio/RETRO Lunk at my LVL completed.ogg" id="9_ua0he"]
+[ext_resource type="AudioStream" uid="uid://blfj6dyvxi4wx" path="res://audio/RETRO Lunk at my Rupee.ogg" id="10_ik7vt"]
+[ext_resource type="AudioStream" uid="uid://d2gjhdy88yt50" path="res://audio/RETRO Lunk at my Sword.ogg" id="11_wep2r"]
+[ext_resource type="AudioStream" uid="uid://d2jtm7ghmiq7h" path="res://audio/RETRO Lunkser.ogg" id="12_d3xph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mta7j"]
 size = Vector2(9, 16)
@@ -151,7 +156,6 @@ shape = SubResource("RectangleShape2D_mta7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pwwve")
-frame_progress = 0.596898
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
@@ -196,3 +200,19 @@ autoplay = true
 [node name="AudioStreamDungeon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_d3p28")
 volume_db = -10.0
+
+[node name="AudioStreamJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_66tn1")
+pitch_scale = 1.39
+
+[node name="AudioStreamWon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ua0he")
+
+[node name="AudioStreamRupee" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ik7vt")
+
+[node name="AudioStreamSword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wep2r")
+
+[node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_d3xph")
