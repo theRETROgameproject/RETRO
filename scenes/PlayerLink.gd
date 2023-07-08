@@ -27,6 +27,7 @@ func enemy():
 				
 				
 	
+
 func gimmegimmegimmeyourblocks(w,layer):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(global_position)
