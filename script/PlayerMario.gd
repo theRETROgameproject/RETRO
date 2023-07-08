@@ -63,7 +63,7 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
-		get_parent().get_parent().init_level2()
+		get_tree().root.get_child(0).switch_level("res://scenes/Level2.tscn")
 		
 func _physics_process(delta):
 	coinspawn()
@@ -131,4 +131,4 @@ func _on_death_body_entered(body):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
 			
-		get_parent().get_parent().death()
+		get_tree().root.get_child(0).death()
