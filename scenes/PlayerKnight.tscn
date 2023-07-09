@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccepxlkb45hxa"]
+[gd_scene load_steps=35 format=3 uid="uid://ccepxlkb45hxa"]
 
 [ext_resource type="Script" path="res://scenes/PlayerKnight.gd" id="1_gdf6h"]
 [ext_resource type="Texture2D" uid="uid://cqg17p0bcfnau" path="res://sprites/Dark Souls/Elden Ring - Knight - dead.png" id="2_vuf7o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4a1sw1dkib16" path="res://sprites/Dark Souls/Elden Ring - Knight - all moves.png" id="4_gu8tn"]
 [ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
 [ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
+[ext_resource type="FontFile" uid="uid://ttjyhhvfcjh3" path="res://sprites/Mono10_v0.95/Mono10 Regular.ttf" id="7_j75kd"]
 [ext_resource type="Shader" path="res://scenes/DarkSouls.gdshader" id="8_7x0vw"]
 [ext_resource type="AudioStream" uid="uid://bcvyokmrppiue" path="res://audio/RETRO uh scary.ogg" id="8_egnc3"]
 [ext_resource type="AudioStream" uid="uid://dajuv6c5dn1ua" path="res://audio/RETRO mcQueen.ogg" id="9_4tb4e"]
@@ -91,6 +92,13 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uby"]
 shader = ExtResource("5_22gtf")
 
+[sub_resource type="LabelSettings" id="LabelSettings_fw083"]
+font = ExtResource("7_j75kd")
+font_size = 80
+font_color = Color(0.843137, 0, 0, 0)
+outline_size = 6
+outline_color = Color(0.568627, 0.517647, 0, 0)
+
 [sub_resource type="Animation" id="Animation_362eg"]
 resource_name = "Blitz"
 length = 0.5
@@ -145,6 +153,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Game Over:label_settings:font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.843137, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:label_settings:font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.85098, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:label_settings:outline_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.85098, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5vjpl"]
 resource_name = "fade_to_black"
@@ -178,18 +222,77 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_7lxg0"]
-resource_name = "game_over"
+[sub_resource type="Animation" id="Animation_svwjb"]
+resource_name = "you_dies"
 length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game Over:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.843137, 0, 0, 0), Color(0.843137, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game Over:label_settings:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.172549, 0, 0, 0), Color(0.172549, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8o73u"]
+resource_name = "completed"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.85098, 0, 0), Color(1, 0.85098, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:label_settings:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.85098, 0, 0), Color(0.439216, 0.372549, 0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
 _data = {
 "Blitz": SubResource("Animation_362eg"),
 "RESET": SubResource("Animation_nni3g"),
+"completed": SubResource("Animation_8o73u"),
 "fade_to_black": SubResource("Animation_5vjpl"),
 "fade_to_normal": SubResource("Animation_co5kg"),
-"game_over": SubResource("Animation_7lxg0")
+"you_dies": SubResource("Animation_svwjb")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_ny8il"]
+font = ExtResource("7_j75kd")
+font_size = 64
+font_color = Color(1, 0.85098, 0, 0)
+outline_color = Color(1, 0.85098, 0, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ghqoe"]
 
@@ -244,6 +347,16 @@ offset_top = 216.0
 offset_right = 480.0
 offset_bottom = 288.0
 
+[node name="Game Over" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 120.0
+offset_top = 105.0
+offset_right = 400.0
+offset_bottom = 198.0
+text = "You Died"
+label_settings = SubResource("LabelSettings_fw083")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
 offset_right = 480.0
 offset_bottom = 288.0
@@ -258,6 +371,23 @@ color = Color(1, 1, 1, 0)
 libraries = {
 "": SubResource("AnimationLibrary_w4lsg")
 }
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -13.0
+offset_right = 67.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Completed"
+label_settings = SubResource("LabelSettings_ny8il")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ShaderContainer" type="CanvasLayer" parent="Camera2D"]
 

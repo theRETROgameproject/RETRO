@@ -841,8 +841,9 @@ position = Vector2(1328, -74)
 shape = SubResource("RectangleShape2D_6lwjg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1483, -134)
+position = Vector2(1514, -130)
 sprite_frames = SubResource("SpriteFrames_jqqs4")
+autoplay = "default"
 frame_progress = 0.859676
 
 [connection signal="body_entered" from="TileMap/GOMMEHD_net" to="PlayerKnight" method="_on_gommehd_net_body_entered"]
