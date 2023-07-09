@@ -248,7 +248,6 @@ offset_right = 480.0
 offset_bottom = 288.0
 
 [node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
 offset_right = 480.0
 offset_bottom = 288.0
 color = Color(0, 0, 0, 1)

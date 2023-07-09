@@ -338,4 +338,4 @@ layer_3/tile_data = PackedInt32Array(65530, 0, 2, 65531, 65536, 2, 131067, 65536
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1438, 3)
 sprite_frames = SubResource("SpriteFrames_jqqs4")
-frame_progress = 0.47794
+frame_progress = 0.150154
