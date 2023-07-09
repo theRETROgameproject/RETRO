@@ -19,6 +19,7 @@ func _ready():
 	coinlabel.text = "Coins: " + str(Main.coins)
 	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
 	livelabel.text = "Lives: " + str(Main.lives)
+	get_child(2).get_child(0).fade_in()
 	
 func gimmegimmegimmeyourblocks(h,layer):
 	var tilemap = get_parent().get_node("TileMap")
@@ -71,6 +72,8 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
+		get_child(2).get_child(0).fade_out()
+		await get_tree().create_timer(0.3).timeout
 		get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		
 func _physics_process(delta):
@@ -142,10 +145,14 @@ func _on_death_body_entered(body):
 		# Handles global live count
 		Main.lives -= 1
 		if Main.lives != 0:
+			get_child(2).get_child(0).fade_out()
+			await get_tree().create_timer(0.3).timeout
 			get_tree().change_scene_to_file("res://scenes/Level1.tscn")
 		else:
 			Main.coins = 0
 			Main.lives = 3
 			# Put Game Over Animation here
+			get_child(2).get_child(0).fade_out()
+			await get_tree().create_timer(0.3).timeout
 			# $AudioStreamGameOver.play()
 			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")

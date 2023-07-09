@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=38 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
 [ext_resource type="Texture2D" uid="uid://7txa1gi6iqo0" path="res://sprites/Mario/Character/Mario_death.png" id="2_7hqik"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cbsxij1qvblyq" path="res://sprites/Mario/Character/jump.png" id="4_x72wv"]
 [ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
 [ext_resource type="AudioStream" uid="uid://buykkngrwgi8c" path="res://audio/RETRO Coin.ogg" id="5_coxds"]
+[ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
 [ext_resource type="AudioStream" uid="uid://bxled1flu6xr0" path="res://audio/RETRO Overworld.ogg" id="6_o4isj"]
 [ext_resource type="AudioStream" uid="uid://dp51x54gwct0g" path="res://audio/RETRO Death.ogg" id="7_bdnu0"]
 [ext_resource type="AudioStream" uid="uid://tt73xuw68xng" path="res://audio/RETRO Won.ogg" id="8_lr1xg"]
@@ -164,6 +165,60 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uby"]
 shader = ExtResource("5_22gtf")
 
+[sub_resource type="Animation" id="Animation_co5kg"]
+resource_name = "fade_to_norma"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nni3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5vjpl"]
+resource_name = "fade_to_black"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
+_data = {
+"RESET": SubResource("Animation_nni3g"),
+"fade_to_black": SubResource("Animation_5vjpl"),
+"fade_to_normal": SubResource("Animation_co5kg")
+}
+
 [node name="PlayerMario" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -197,12 +252,23 @@ drag_bottom_margin = 0.5
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("6_gofho")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_r0uby")
 offset_top = 216.0
 offset_right = 480.0
 offset_bottom = 288.0
+
+[node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_w4lsg")
+}
 
 [node name="AudioStreamCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_coxds")

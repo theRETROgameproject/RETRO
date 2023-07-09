@@ -1,19 +1,98 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtv7mn5k7f6ti"]
+[gd_scene load_steps=11 format=3 uid="uid://dtv7mn5k7f6ti"]
 
+[ext_resource type="Texture2D" uid="uid://tisnvbgtaj0e" path="res://sprites/background.png" id="1_627q3"]
+[ext_resource type="FontFile" uid="uid://ttjyhhvfcjh3" path="res://sprites/Mono10_v0.95/Mono10 Regular.ttf" id="1_aj3eo"]
+[ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_t3ike"]
 [ext_resource type="Script" path="res://scenes/Button.gd" id="1_vw774"]
+[ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="4_557mg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2c37"]
+font = ExtResource("1_aj3eo")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_co5kg"]
+resource_name = "fade_to_norma"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nni3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5vjpl"]
+resource_name = "fade_to_black"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
+_data = {
+"RESET": SubResource("Animation_nni3g"),
+"fade_to_black": SubResource("Animation_5vjpl"),
+"fade_to_normal": SubResource("Animation_co5kg")
+}
 
 [node name="Start Screen" type="Node2D"]
+script = ExtResource("1_t3ike")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -27.0
+offset_top = -76.0
+offset_right = 973.0
+offset_bottom = 523.0
+texture = ExtResource("1_627q3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 480.0
-offset_bottom = 288.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 493.0
+offset_bottom = 327.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Press Button to play"
+text = "
+--- RETRO ---
+Click the Button or press Enter to play!
+ 
+ "
+label_settings = SubResource("LabelSettings_l2c37")
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
@@ -21,7 +100,23 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-text = "Start"
+theme_override_fonts/font = ExtResource("1_aj3eo")
+theme_override_font_sizes/font_size = 24
+text = " START "
 script = ExtResource("1_vw774")
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/Button" to="PanelContainer/VBoxContainer/CenterContainer/Button" method="_on_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_557mg")
+
+[node name="Black" type="ColorRect" parent="CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 288.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_w4lsg")
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_button_pressed"]
