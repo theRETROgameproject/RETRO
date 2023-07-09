@@ -7,6 +7,7 @@ const ACCELERATION_AIR = 800
 const FRICTION = 0.13
 var start = true
 var dead = false
+var dead_by_enemy = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -42,8 +43,9 @@ func enemy():
 				enemycoin(e)
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
-			# put death here
-			pass
+			if !dead_by_enemy:
+				dead_by_enemy = true
+				death("PlayerLink")
 				
 				
 	
@@ -53,7 +55,40 @@ func enemycoin(e):
 	var atlascoords = tilemap.get_cell_atlas_coords(0,tilemapcoords)
 	var random = randi_range(0,1)
 	tilemap.set_cell(0,tilemapcoords,2,Vector2i(random,random))
+
+
+func coin_collect():
+	var tilemap = get_parent().get_node("TileMap")
+	var data = gimmegimmegimmeyourblocks(0,0)
+	if data.a_coords == Vector2i(0,0) && data.s_id == 2:
+		$AudioStreamRupee.play()
+		tilemap.set_cell(1,data.coords,-1)
 		
+		# Handles global coin count
+		Main.coins += 5
+		print("Godot Hurensohn x5")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
+		
+	if data.a_coords == Vector2i(0,1) && data.s_id == 2:
+		$AudioStreamRupee.play()
+		tilemap.set_cell(1,data.coords,-1)
+		
+		# Handles global coin count
+		Main.coins += 1
+		print("Godot Hurensohn")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
+	
+	if data.a_coords == Vector2i(1,1) && data.s_id == 2:
+		$AudioStreamRupee.play()
+		tilemap.set_cell(1,data.coords,-1)
+		
+		# Handles global coin count
+		Main.coins += 20
+		print("Godot Hurensohn xJackpot")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
 		
 func gimmegimmegimmeyourblocks(w,layer):
 	var tilemap = get_parent().get_node("TileMap")
@@ -77,6 +112,8 @@ func anime():
 	
 	
 func _physics_process(delta):
+    coin_collect()
+
 	if $AnimatedSprite2D.animation_finished:
 		anime()
 		
@@ -134,16 +171,20 @@ func _on_dungeon_body_entered(body):
 
 
 func _on_dungeon_body_exited(body):
-	if body.name == "PlayerLink":
+	if body.name == "PlayerLink" && !dead:
 		get_node("Camera2D/Draußen").visible = true
 		get_node("Camera2D/Dungeon").visible = false
 		$AudioStreamDungeon.stop()
 		$AudioStreamMusic.play()
 
 func _on_death_body_entered(body):
+	death(body.name)
+	
+func death(name):
 	print("fuck godot")
-	if body.name == "PlayerLink":
+	if name == "PlayerLink":
 		dead = true
+		Main.dead = true
 		$AudioStreamMusic.stop()
 		$AudioStreamDungeon.stop()
 		$AudioStreamDeath.play()
@@ -163,6 +204,7 @@ func _on_death_body_entered(body):
 		# Handles global live count
 		print("test")
 		Main.lives -= 1
+		Main.dead = false
 		if Main.lives != 0:
 			get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		else:

@@ -22,7 +22,7 @@ func _physics_process(delta):
 	var left = gimmegimmegimmeyourblocks(-1,0)
 	var right = gimmegimmegimmeyourblocks(1,0)
 	
-	if is_on_floor() and velocity.x ==0:
+	if is_on_floor() and velocity.x == 0:
 		if left.s_id != -1:
 			velocity.y = -300
 			await get_tree().create_timer(0.05).timeout
@@ -38,21 +38,25 @@ func _physics_process(delta):
 	var playerXpos = get_parent().get_parent().get_node("PlayerLink").position.x
 	var deltaXPlayer = position.x-playerXpos
 	var deltaXStart = position.x-startpos
-	if deltaXPlayer > 5 && deltaXPlayer < 150:
-		velocity.x = -50
-		
-	elif deltaXPlayer < -5 && deltaXPlayer > -150: 
-		velocity.x = 50
-		
-	else:
-		if deltaXStart > 20:
-			velocity.x = -20
-			if deltaXStart == 20:
-				velocity.x = 20
-		elif deltaXStart < -20:
-			velocity.x = 20
-			if deltaXStart == -20:
+	
+	if !Main.dead:
+		if deltaXPlayer > 5 && deltaXPlayer < 150:
+			velocity.x = -50
+			
+		elif deltaXPlayer < -5 && deltaXPlayer > -150: 
+			velocity.x = 50
+			
+		else:
+			if deltaXStart > 20:
 				velocity.x = -20
+				if deltaXStart == 20:
+					velocity.x = 20
+			elif deltaXStart < -20:
+				velocity.x = 20
+				if deltaXStart == -20:
+					velocity.x = -20
+	else:
+		velocity.x = 0
 		
 	if velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false

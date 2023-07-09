@@ -6,7 +6,6 @@ const JUMP_VELOCITY = -375.0
 const ACCELERATION = 1500
 const ACCELERATION_AIR = 800
 const FRICTION = 0.13
-var coins = 0
 var hit_flag = false
 var dead = false
 var won_sound = false
@@ -151,4 +150,3 @@ func _on_death_body_entered(body):
 			# Put Game Over Animation here
 			# $AudioStreamGameOver.play()
 			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
-			
