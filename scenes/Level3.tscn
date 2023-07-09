@@ -837,7 +837,7 @@ layer_3/tile_data = PackedInt32Array(4, 65536, 4, 5, 131072, 4, -327676, 65536, 
 [node name="GOMMEHD_net" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/GOMMEHD_net"]
-position = Vector2(1332, 57)
+position = Vector2(1328, -74)
 shape = SubResource("RectangleShape2D_6lwjg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
