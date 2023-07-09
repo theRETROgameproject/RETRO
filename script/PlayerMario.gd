@@ -130,5 +130,6 @@ func _on_death_body_entered(body):
 		for i in range(30):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
-			
-		get_tree().root.get_child(0).death()
+		
+		print("test")
+		Main.death()
