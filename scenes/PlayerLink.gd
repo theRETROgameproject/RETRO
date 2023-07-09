@@ -36,12 +36,14 @@ func enemy():
 		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
 			if get_child(0).get_time_left() > 0:		
 				enemycoin(e)
-				e.queue_free()
+				e.death()
+				
 					
 		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 20:
 			if get_child(0).get_time_left() > 0:	
 				enemycoin(e)
-				e.queue_free()
+				e.death()
+				
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
 			if !dead_by_enemy:
 				dead_by_enemy = true

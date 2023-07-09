@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var dead = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,13 +17,33 @@ func gimmegimmegimmeyourblocks(w,layer):
 	var source_id = tilemap.get_cell_source_id(layer,tilemapcoords)
 	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
 	
+func anime():
+	if dead:
+		$AnimatedSprite2D.play("death")
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.play("default")
+	elif velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("default")
+	elif velocity.x == 0:
+		$AnimatedSprite2D.play("idle")
+
+func death():
+	dead = true
+	await get_tree().create_timer(0.8125).timeout	
+	queue_free()
 
 func _physics_process(delta):
+
+	
+	if $AnimatedSprite2D.animation_finished:
+		anime()
 	
 	var left = gimmegimmegimmeyourblocks(-1,0)
 	var right = gimmegimmegimmeyourblocks(1,0)
 	
-	if is_on_floor() and velocity.x == 0:
+	if is_on_floor() and velocity.x == 0 and !dead:
 		if left.s_id != -1:
 			velocity.y = -300
 			await get_tree().create_timer(0.05).timeout
@@ -39,7 +60,7 @@ func _physics_process(delta):
 	var deltaXPlayer = position.x-playerXpos
 	var deltaXStart = position.x-startpos
 	
-	if !Main.dead:
+	if !Main.dead && !dead:
 		if deltaXPlayer > 5 && deltaXPlayer < 150:
 			velocity.x = -50
 			
@@ -58,13 +79,5 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		
-	if velocity.x > 0:
-		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.play("default")
-	elif velocity.x < 0:
-		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.play("default")
-	else:
-		$AnimatedSprite2D.play("idle")
 	
 	move_and_slide()
