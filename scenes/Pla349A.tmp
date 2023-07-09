@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ccepxlkb45hxa"]
+[gd_scene load_steps=28 format=3 uid="uid://ccepxlkb45hxa"]
 
 [ext_resource type="Script" path="res://scenes/PlayerKnight.gd" id="1_gdf6h"]
 [ext_resource type="Texture2D" uid="uid://cqg17p0bcfnau" path="res://sprites/Dark Souls/Elden Ring - Knight - dead.png" id="2_vuf7o"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="13_cjxo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
-size = Vector2(8, 15)
+size = Vector2(9, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n77f1"]
 atlas = ExtResource("4_gu8tn")
@@ -136,18 +136,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(0.568627, 0.517647, 0, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MrWhite:color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_5vjpl"]
 resource_name = "fade_to_black"
@@ -209,25 +197,8 @@ tracks/1/keys = {
 "values": [Color(0.568627, 0.517647, 0, 0), Color(0.568627, 0.517647, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_362eg"]
-resource_name = "Blitz"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MrWhite:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
 _data = {
-"Blitz": SubResource("Animation_362eg"),
 "RESET": SubResource("Animation_nni3g"),
 "fade_to_black": SubResource("Animation_5vjpl"),
 "fade_to_normal": SubResource("Animation_co5kg"),
@@ -240,12 +211,13 @@ collision_mask = 3
 script = ExtResource("1_gdf6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0.5)
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_nbt20")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_c2fes")
+frame_progress = 0.842372
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
@@ -267,6 +239,7 @@ drag_bottom_margin = 0.5
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+visible = false
 script = ExtResource("6_gofho")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
@@ -292,10 +265,6 @@ label_settings = SubResource("LabelSettings_8fqtv")
 libraries = {
 "": SubResource("AnimationLibrary_w4lsg")
 }
-
-[node name="MrWhite" type="ColorRect" parent="Camera2D/CanvasLayer"]
-offset_right = 480.0
-offset_bottom = 288.0
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_o4isj")

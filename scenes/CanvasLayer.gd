@@ -8,3 +8,6 @@ func fade_out():
 
 func game_over():
 	$AnimationPlayer.play("game_over")
+
+func blitz():
+	$AnimationPlayer.play("Blitz")
