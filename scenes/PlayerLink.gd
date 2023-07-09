@@ -227,7 +227,8 @@ func death(name):
 
 func _on_exit_body_entered(body):
 	if body.name == "PlayerLink":
+		$AudioStreamDungeon.stop()
 		$AudioStreamWon.play()
 		get_child(3).get_child(2).fade_out()
-		await get_tree().create_timer(1.6).timeout
+		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://scenes/Level3.tscn")

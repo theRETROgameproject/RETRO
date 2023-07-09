@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
 [ext_resource type="Shader" path="res://scenes/DarkSouls.gdshader" id="8_7x0vw"]
 [ext_resource type="AudioStream" uid="uid://bcvyokmrppiue" path="res://audio/RETRO uh scary.ogg" id="8_egnc3"]
-[ext_resource type="FontFile" uid="uid://ttjyhhvfcjh3" path="res://sprites/Mono10_v0.95/Mono10 Regular.ttf" id="8_yoy6v"]
 [ext_resource type="AudioStream" uid="uid://dajuv6c5dn1ua" path="res://audio/RETRO mcQueen.ogg" id="9_4tb4e"]
 [ext_resource type="AudioStream" uid="uid://dj311kdo77yx2" path="res://audio/RETRO the end.ogg" id="10_kywal"]
 [ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="13_cjxo5"]
@@ -92,12 +91,21 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uby"]
 shader = ExtResource("5_22gtf")
 
-[sub_resource type="LabelSettings" id="LabelSettings_8fqtv"]
-font = ExtResource("8_yoy6v")
-font_size = 64
-font_color = Color(0.843137, 0.780392, 0, 0)
-outline_size = 6
-outline_color = Color(0.568627, 0.517647, 0, 0)
+[sub_resource type="Animation" id="Animation_362eg"]
+resource_name = "Blitz"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MrWhite:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nni3g"]
 length = 0.001
@@ -116,38 +124,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Game Over:label_settings:font_color")
+tracks/1/path = NodePath("Game Over:label_settings:outline_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.843137, 0.780392, 0, 0)]
+"values": [Color(0.568627, 0.517647, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Game Over:label_settings:outline_color")
+tracks/2/path = NodePath("MrWhite:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.568627, 0.517647, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MrWhite:color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_5vjpl"]
@@ -185,46 +181,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7lxg0"]
 resource_name = "game_over"
 length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Game Over:label_settings:font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.843137, 0.780392, 0, 0), Color(0.843137, 0.780392, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Game Over:label_settings:outline_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.568627, 0.517647, 0, 0), Color(0.568627, 0.517647, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_362eg"]
-resource_name = "Blitz"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MrWhite:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
 _data = {
@@ -262,7 +218,7 @@ sprite_frames = SubResource("SpriteFrames_c2fes")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
-position = Vector2(0, 1.19209e-07)
+position = Vector2(80, -48)
 scale = Vector2(0.997173, 1.00956)
 process_callback = 0
 limit_left = -144
@@ -284,29 +240,30 @@ visible = false
 script = ExtResource("6_gofho")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_r0uby")
 offset_top = 216.0
 offset_right = 480.0
 offset_bottom = 288.0
 
 [node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
 offset_right = 480.0
 offset_bottom = 288.0
 color = Color(0, 0, 0, 1)
 
-[node name="Game Over" type="Label" parent="Camera2D/CanvasLayer"]
-offset_left = 120.0
-offset_top = 105.0
-offset_right = 372.0
-offset_bottom = 180.0
-text = "Game Over"
-label_settings = SubResource("LabelSettings_8fqtv")
+[node name="MrWhite" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
+offset_right = 480.0
+offset_bottom = 288.0
+color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
 libraries = {
 "": SubResource("AnimationLibrary_w4lsg")
 }
 
+<<<<<<< HEAD
 [node name="MrWhite" type="ColorRect" parent="Camera2D/CanvasLayer"]
 offset_right = 480.0
 offset_bottom = 288.0
@@ -318,9 +275,10 @@ material = SubResource("ShaderMaterial_0dit3")
 offset_right = 480.0
 offset_bottom = 288.0
 
+=======
+>>>>>>> 97c8dfd (gh)
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_egnc3")
-volume_db = -10.0
 autoplay = true
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
@@ -330,3 +288,4 @@ stream = ExtResource("9_4tb4e")
 stream = ExtResource("10_kywal")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("13_cjxo5")]
+visible = false

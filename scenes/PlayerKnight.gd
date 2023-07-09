@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	get_child(2).get_child(0).fade_in()
-	velocity.x = 100
+	velocity.x = 27
 
 func anime():
 	if dead:
