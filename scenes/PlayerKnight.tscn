@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://4a1sw1dkib16" path="res://sprites/Dark Souls/Elden Ring - Knight - all moves.png" id="4_gu8tn"]
 [ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
 [ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
-[ext_resource type="AudioStream" uid="uid://bxled1flu6xr0" path="res://audio/RETRO Overworld.ogg" id="6_o4isj"]
-[ext_resource type="AudioStream" uid="uid://dp51x54gwct0g" path="res://audio/RETRO Death.ogg" id="7_bdnu0"]
 [ext_resource type="Shader" path="res://scenes/DarkSouls.gdshader" id="8_7x0vw"]
-[ext_resource type="AudioStream" uid="uid://tt73xuw68xng" path="res://audio/RETRO Won.ogg" id="8_lr1xg"]
+[ext_resource type="AudioStream" uid="uid://bcvyokmrppiue" path="res://audio/RETRO uh scary.ogg" id="8_egnc3"]
 [ext_resource type="FontFile" uid="uid://ttjyhhvfcjh3" path="res://sprites/Mono10_v0.95/Mono10 Regular.ttf" id="8_yoy6v"]
+[ext_resource type="AudioStream" uid="uid://dajuv6c5dn1ua" path="res://audio/RETRO mcQueen.ogg" id="9_4tb4e"]
+[ext_resource type="AudioStream" uid="uid://dj311kdo77yx2" path="res://audio/RETRO the end.ogg" id="10_kywal"]
 [ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="13_cjxo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
@@ -319,14 +319,14 @@ offset_right = 480.0
 offset_bottom = 288.0
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_o4isj")
+stream = ExtResource("8_egnc3")
 volume_db = -10.0
 autoplay = true
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_bdnu0")
+stream = ExtResource("9_4tb4e")
 
 [node name="AudioStreamWon" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_lr1xg")
+stream = ExtResource("10_kywal")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("13_cjxo5")]
