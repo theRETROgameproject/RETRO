@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccepxlkb45hxa"]
+[gd_scene load_steps=27 format=3 uid="uid://ccepxlkb45hxa"]
 
 [ext_resource type="Script" path="res://scenes/PlayerKnight.gd" id="1_gdf6h"]
 [ext_resource type="Texture2D" uid="uid://cqg17p0bcfnau" path="res://sprites/Dark Souls/Elden Ring - Knight - dead.png" id="2_vuf7o"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://4a1sw1dkib16" path="res://sprites/Dark Souls/Elden Ring - Knight - all moves.png" id="4_gu8tn"]
 [ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
 [ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
-[ext_resource type="Shader" path="res://scenes/DarkSouls.gdshader" id="8_7x0vw"]
 [ext_resource type="AudioStream" uid="uid://bcvyokmrppiue" path="res://audio/RETRO uh scary.ogg" id="8_egnc3"]
 [ext_resource type="AudioStream" uid="uid://dajuv6c5dn1ua" path="res://audio/RETRO mcQueen.ogg" id="9_4tb4e"]
 [ext_resource type="AudioStream" uid="uid://dj311kdo77yx2" path="res://audio/RETRO the end.ogg" id="10_kywal"]
@@ -191,18 +190,6 @@ _data = {
 "game_over": SubResource("Animation_7lxg0")
 }
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2q12b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vscqp"]
-width = 480
-height = 288
-seamless = true
-noise = SubResource("FastNoiseLite_2q12b")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dit3"]
-shader = ExtResource("8_7x0vw")
-shader_parameter/noise = SubResource("NoiseTexture2D_vscqp")
-
 [node name="PlayerKnight" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -258,13 +245,6 @@ color = Color(1, 1, 1, 0)
 libraries = {
 "": SubResource("AnimationLibrary_w4lsg")
 }
-
-[node name="Dungeon" type="CanvasLayer" parent="Camera2D"]
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Dungeon"]
-material = SubResource("ShaderMaterial_0dit3")
-offset_right = 480.0
-offset_bottom = 288.0
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_egnc3")
