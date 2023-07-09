@@ -17,6 +17,7 @@ func _ready():
 	coinlabel.text = "Coins: " + str(Main.coins)
 	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
 	livelabel.text = "Lives: " + str(Main.lives)
+	get_child(3).get_child(2).fade_in()
 	
 func attack():
 	var timer = get_child(0)
@@ -188,6 +189,11 @@ func _on_death_body_entered(body):
 	
 func death(name):
 	if name == "PlayerLink":
+		# Handles global live count
+		Main.lives -= 1
+		var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+		livelabel.text = "Lives: " + str(Main.lives)
+		
 		dead = true
 		Main.dead = true
 		$AudioStreamMusic.stop()
@@ -206,15 +212,19 @@ func death(name):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
 		
-		# Handles global live count
-		Main.lives -= 1
 		Main.dead = false
 		if Main.lives != 0:
+			get_child(3).get_child(2).fade_out()
+			await get_tree().create_timer(0.3).timeout
 			get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		else:
 			Main.coins = 0
 			Main.lives = 3
 			# Put Game Over Animation here
-			# $AudioStreamGameOver.play()
+			get_child(3).get_child(2).fade_out()
+			$AudioStreamGameOver.play()
+			await get_tree().create_timer(0.5).timeout
+			get_child(3).get_child(2).game_over()
+			await get_tree().create_timer(12.5).timeout
 			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 			

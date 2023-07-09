@@ -126,6 +126,11 @@ func _physics_process(delta):
 
 func _on_death_body_entered(body):
 	if body.name == "PlayerMario":
+		# Handles global live count
+		Main.lives -= 1
+		var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+		livelabel.text = "Lives: " + str(Main.lives)
+		
 		dead = true
 		$AudioStreamMusic.stop()
 		$AudioStreamDeath.play()
@@ -142,8 +147,6 @@ func _on_death_body_entered(body):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
 		
-		# Handles global live count
-		Main.lives -= 1
 		if Main.lives != 0:
 			get_child(2).get_child(0).fade_out()
 			await get_tree().create_timer(0.3).timeout
@@ -153,6 +156,8 @@ func _on_death_body_entered(body):
 			Main.lives = 3
 			# Put Game Over Animation here
 			get_child(2).get_child(0).fade_out()
-			await get_tree().create_timer(0.3).timeout
-			# $AudioStreamGameOver.play()
+			await get_tree().create_timer(0.5).timeout
+			get_child(2).get_child(0).game_over()
+			$AudioStreamGameOver.play()
+			await get_tree().create_timer(7).timeout
 			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
