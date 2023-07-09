@@ -101,7 +101,9 @@ func gimmegimmegimmeyourblocks(w,layer):
 	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
 	
 func anime():
-	if (get_child(0).get_time_left() > 0):
+	if dead:
+		$AnimatedSprite2D.play("death")
+	elif (get_child(0).get_time_left() > 0):
 		$AnimatedSprite2D.play("attack")
 	elif velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
@@ -198,7 +200,7 @@ func death(name):
 		get_node("Camera2D").set_limit(SIDE_BOTTOM,c_pos+143)
 		velocity.x = 0
 		velocity.y = -150
-		$AnimatedSprite2D.play("death")
+		
 		for i in range(30):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
