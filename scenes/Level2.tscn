@@ -1264,7 +1264,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fx1me"]
-size = Vector2(10, 15)
+size = Vector2(9, 14.738)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iw57j"]
 size = Vector2(3816, 21)
@@ -1303,17 +1303,18 @@ shape = SubResource("RectangleShape2D_eh6wf")
 
 [node name="Gegner1" type="CharacterBody2D" parent="Gegner"]
 z_index = 1
-position = Vector2(189, 72)
+position = Vector2(208, 64)
 script = ExtResource("10_71qq6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner1"]
 material = SubResource("ShaderMaterial_iv2kb")
 sprite_frames = SubResource("SpriteFrames_oomxn")
-animation = &"death"
-frame_progress = 0.785151
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner1"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
 shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Death" type="Area2D" parent="."]
 script = ExtResource("11_67hxr")

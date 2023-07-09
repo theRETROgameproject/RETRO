@@ -34,30 +34,25 @@ func enemy():
 		var deltaX = e.position.x-position.x
 		var deltaY = sqrt(pow(e.position.y-position.y,2.0))
 		var heading = $AnimatedSprite2D.flip_h
-		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
+		
+		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 16:
 			if get_child(0).get_time_left() > 0:		
-				enemycoin(e)
 				e.death()
 				
 					
-		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 20:
+		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 16:
 			if get_child(0).get_time_left() > 0:	
-				enemycoin(e)
 				e.death()
 				
-		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
+				
+		if(deltaX < 11 && deltaX > -11) && deltaY < 20 && !e.dead:
 			if !dead_by_enemy:
 				dead_by_enemy = true
 				death("PlayerLink")
 				
 				
 	
-func enemycoin(e):
-	var tilemap = get_parent().get_node("TileMap")
-	var tilemapcoords = tilemap.local_to_map(e.global_position)
-	var atlascoords = tilemap.get_cell_atlas_coords(0,tilemapcoords)
-	var random = randi_range(0,1)
-	tilemap.set_cell(0,tilemapcoords,2,Vector2i(random,random))
+
 
 
 func coin_collect():
