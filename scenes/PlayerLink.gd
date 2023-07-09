@@ -33,7 +33,8 @@ func enemy():
 				enemycoin(e)
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
-			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+			# put death here
+			pass
 				
 				
 	
@@ -69,42 +70,43 @@ func _physics_process(delta):
 		start = false
 	else:
 		var direction = 0
-		direction = Input.get_axis("ui_left", "ui_right")
+		if !dead:
+			direction = Input.get_axis("ui_left", "ui_right")
 		
-		var VELX = 0
-		if not is_on_floor():
-			velocity.y += gravity * delta
-			if direction > 0 and velocity.x < VELX+70:
-				velocity.x += 10
-			if direction < 0 and velocity.x > VELX-70:
-				velocity.x -= 10
+			var VELX = 0
+			if not is_on_floor():
+				velocity.y += gravity * delta
+				if direction > 0 and velocity.x < VELX+70:
+					velocity.x += 10
+				if direction < 0 and velocity.x > VELX-70:
+					velocity.x -= 10
 
 	# Handle Jump.
-		if Input.is_action_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			VELX = velocity.x
-			$AudioStreamJump.play()
+			if Input.is_action_pressed("ui_accept") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+				VELX = velocity.x
+				$AudioStreamJump.play()
 		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-		if direction > 0 and is_on_floor():
-			if !attack:
-				$AnimatedSprite2D.flip_h = false
-				$AnimatedSprite2D.play("default")
-			velocity.x = ACCELERATION*delta + velocity.x - FRICTION*velocity.x
-		elif direction < 0 and is_on_floor():
-			velocity.x = -ACCELERATION*delta + velocity.x - FRICTION*velocity.x
-			if !attack:
-				$AnimatedSprite2D.flip_h = true
-				$AnimatedSprite2D.play("default")
-		elif is_on_floor():
-			velocity.x = velocity.x - FRICTION*1.8*velocity.x
-			if !attack:
-				$AnimatedSprite2D.play("idle")
-			if velocity.x < 0.1 and velocity.x > -0.1:
-				velocity.x = 0
+			if direction > 0 and is_on_floor():
+				if !attack:
+					$AnimatedSprite2D.flip_h = false
+					$AnimatedSprite2D.play("default")
+				velocity.x = ACCELERATION*delta + velocity.x - FRICTION*velocity.x
+			elif direction < 0 and is_on_floor():
+				velocity.x = -ACCELERATION*delta + velocity.x - FRICTION*velocity.x
+				if !attack:
+					$AnimatedSprite2D.flip_h = true
+					$AnimatedSprite2D.play("default")
+			elif is_on_floor():
+				velocity.x = velocity.x - FRICTION*1.8*velocity.x
+				if !attack:
+					$AnimatedSprite2D.play("idle")
+				if velocity.x < 0.1 and velocity.x > -0.1:
+					velocity.x = 0
 
 	move_and_slide()
 
