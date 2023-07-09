@@ -18,16 +18,25 @@ func enemy():
 		var heading = $AnimatedSprite2D.flip_h
 		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
 			if Input.is_key_pressed(KEY_V):		
-				e.queue_free()	
+				enemycoin(e)
+				e.queue_free()
+					
 		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 20:
 			if Input.is_key_pressed(KEY_V):	
+				enemycoin(e)
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
 			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 				
 				
 	
-
+func enemycoin(e):
+	var tilemap = get_parent().get_node("TileMap")
+	var tilemapcoords = tilemap.local_to_map(e.global_position)
+	var atlascoords = tilemap.get_cell_atlas_coords(0,tilemapcoords)
+	tilemap.set_cell(0,tilemapcoords,2,Vector2i(0,0))
+		
+		
 func gimmegimmegimmeyourblocks(w,layer):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(global_position)
