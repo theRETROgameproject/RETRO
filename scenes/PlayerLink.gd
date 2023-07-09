@@ -17,6 +17,15 @@ func _ready():
 	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
 	livelabel.text = "Lives: " + str(Main.lives)
 	
+func attack():
+	var timer = get_child(0)
+	if timer.is_stopped():
+		timer.start(0.375)
+		$AudioStreamSword.play()
+		timer.set_one_shot(true)
+		
+	
+	
 func enemy():
 	var enemy = get_parent().get_child(2).get_children()
 	for e in enemy:
@@ -24,12 +33,12 @@ func enemy():
 		var deltaY = sqrt(pow(e.position.y-position.y,2.0))
 		var heading = $AnimatedSprite2D.flip_h
 		if (deltaX > -15 && deltaX < 10) && heading && deltaY < 20:
-			if Input.is_key_pressed(KEY_V):		
+			if get_child(0).get_time_left() > 0:		
 				enemycoin(e)
 				e.queue_free()
 					
 		elif(deltaX < 15 && deltaX > 10) && !heading && deltaY < 20:
-			if Input.is_key_pressed(KEY_V):	
+			if get_child(0).get_time_left() > 0:	
 				enemycoin(e)
 				e.queue_free()
 		elif(deltaX < 11 && deltaX > -11) && deltaY < 20:
@@ -42,7 +51,8 @@ func enemycoin(e):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(e.global_position)
 	var atlascoords = tilemap.get_cell_atlas_coords(0,tilemapcoords)
-	tilemap.set_cell(0,tilemapcoords,2,Vector2i(0,0))
+	var random = randi_range(0,1)
+	tilemap.set_cell(0,tilemapcoords,2,Vector2i(random,random))
 		
 		
 func gimmegimmegimmeyourblocks(w,layer):
@@ -52,13 +62,26 @@ func gimmegimmegimmeyourblocks(w,layer):
 	var atlascoords = tilemap.get_cell_atlas_coords(layer,tilemapcoords)
 	var source_id = tilemap.get_cell_source_id(layer,tilemapcoords)
 	return {"coords":tilemapcoords,"a_coords":atlascoords,"s_id":source_id}
-			
-func _physics_process(delta):
 	
-	var attack = Input.is_action_pressed("attack_btn")
-	if attack:
-		$AudioStreamSword.play()
+func anime():
+	if (get_child(0).get_time_left() > 0):
 		$AnimatedSprite2D.play("attack")
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.play("default")
+	elif velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("default")
+	elif velocity.x == 0:
+		$AnimatedSprite2D.play("idle")
+	
+	
+func _physics_process(delta):
+	if $AnimatedSprite2D.animation_finished:
+		anime()
+		
+	if Input.is_action_pressed("attack_btn"):
+		attack()
 
 		
 		
@@ -66,7 +89,6 @@ func _physics_process(delta):
 	
 	if start:
 		velocity.x = 100
-		$AnimatedSprite2D.play("default")
 		start = false
 	else:
 		var direction = 0
@@ -92,19 +114,11 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 			if direction > 0 and is_on_floor():
-				if !attack:
-					$AnimatedSprite2D.flip_h = false
-					$AnimatedSprite2D.play("default")
 				velocity.x = ACCELERATION*delta + velocity.x - FRICTION*velocity.x
 			elif direction < 0 and is_on_floor():
 				velocity.x = -ACCELERATION*delta + velocity.x - FRICTION*velocity.x
-				if !attack:
-					$AnimatedSprite2D.flip_h = true
-					$AnimatedSprite2D.play("default")
 			elif is_on_floor():
 				velocity.x = velocity.x - FRICTION*1.8*velocity.x
-				if !attack:
-					$AnimatedSprite2D.play("idle")
 				if velocity.x < 0.1 and velocity.x > -0.1:
 					velocity.x = 0
 
