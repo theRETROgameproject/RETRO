@@ -185,7 +185,6 @@ func _on_death_body_entered(body):
 	death(body.name)
 	
 func death(name):
-	print("fuck godot")
 	if name == "PlayerLink":
 		dead = true
 		Main.dead = true
@@ -206,7 +205,6 @@ func death(name):
 			velocity.y += gravity*0.02
 		
 		# Handles global live count
-		print("test")
 		Main.lives -= 1
 		Main.dead = false
 		if Main.lives != 0:

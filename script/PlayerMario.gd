@@ -140,7 +140,6 @@ func _on_death_body_entered(body):
 			velocity.y += gravity*0.02
 		
 		# Handles global live count
-		print("test")
 		Main.lives -= 1
 		if Main.lives != 0:
 			get_tree().change_scene_to_file("res://scenes/Level1.tscn")
