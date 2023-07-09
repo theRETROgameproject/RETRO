@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nw7pfvttvvs7"
-path="res://.godot/imported/Elden Ring - all Dragons mit Blitzen.png-2ba16057d9b0d9c2d2e164290950f7ba.ctex"
+uid="uid://dwl46xib28ker"
+path="res://.godot/imported/LunkRunning.png-6e8efd7c57ab3ab8ac5fc2f005922eea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Dark Souls/Elden Ring - all Dragons mit Blitzen.png"
-dest_files=["res://.godot/imported/Elden Ring - all Dragons mit Blitzen.png-2ba16057d9b0d9c2d2e164290950f7ba.ctex"]
+source_file="res://sprites/Zelda/Link/LunkRunning.png"
+dest_files=["res://.godot/imported/LunkRunning.png-6e8efd7c57ab3ab8ac5fc2f005922eea.ctex"]
 
 [params]
 

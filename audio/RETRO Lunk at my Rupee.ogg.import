@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blfj6dyvxi4wx"
+path="res://.godot/imported/RETRO Lunk at my Rupee.ogg-7a5ba6ceea9990142d0fea30dc068f64.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO Lunk at my Rupee.ogg"
+dest_files=["res://.godot/imported/RETRO Lunk at my Rupee.ogg-7a5ba6ceea9990142d0fea30dc068f64.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

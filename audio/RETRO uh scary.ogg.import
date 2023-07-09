@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcvyokmrppiue"
+path="res://.godot/imported/RETRO uh scary.ogg-ebe3b367c5018038e11eeda4dcbfd9c0.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO uh scary.ogg"
+dest_files=["res://.godot/imported/RETRO uh scary.ogg-ebe3b367c5018038e11eeda4dcbfd9c0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

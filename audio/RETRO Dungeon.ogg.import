@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1ov56m4vd5ei"
+path="res://.godot/imported/RETRO Dungeon.ogg-59bd48c54bbea0619ffe9efde005854d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/RETRO Dungeon.ogg"
+dest_files=["res://.godot/imported/RETRO Dungeon.ogg-59bd48c54bbea0619ffe9efde005854d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

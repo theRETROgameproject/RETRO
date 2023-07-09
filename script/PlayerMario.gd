@@ -6,7 +6,6 @@ const JUMP_VELOCITY = -375.0
 const ACCELERATION = 1500
 const ACCELERATION_AIR = 800
 const FRICTION = 0.13
-var coins = 0
 var hit_flag = false
 var dead = false
 var won_sound = false
@@ -15,6 +14,13 @@ var slide_sound = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+	coinlabel.text = "Coins: " + str(Main.coins)
+	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+	livelabel.text = "Lives: " + str(Main.lives)
+	get_child(2).get_child(0).fade_in()
+	
 func gimmegimmegimmeyourblocks(h,layer):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(global_position)
@@ -31,15 +37,18 @@ func coinspawn():
 		data.coords.y -= 1
 		tilemap.set_cell(1,data.coords,2,Vector2(4,0))
 		
-func coin_collect():	
+func coin_collect():
 	var tilemap = get_parent().get_node("TileMap")
 	var data = gimmegimmegimmeyourblocks(0,1)
 	if data.a_coords == Vector2i(4,0) && data.s_id == 2:
 		$AudioStreamCoin.play()
 		tilemap.set_cell(1,data.coords,-1)
-		coins += 1
-		var coinlabel = get_parent().get_node("CanvasLayer/Label")
-		coinlabel.text = str("Coins: ", coins )
+		
+		# Handles global coin count
+		Main.coins += 1
+		print("Godot Hurensohn")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
 	
 func flag():
 	# var tilemap = get_parent().get_node("TileMap")
@@ -63,7 +72,9 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
-		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+		get_child(2).get_child(0).fade_out()
+		await get_tree().create_timer(0.3).timeout
+		get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		
 func _physics_process(delta):
 	coinspawn()
@@ -115,6 +126,11 @@ func _physics_process(delta):
 
 func _on_death_body_entered(body):
 	if body.name == "PlayerMario":
+		# Handles global live count
+		Main.lives -= 1
+		var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+		livelabel.text = "Lives: " + str(Main.lives)
+		
 		dead = true
 		$AudioStreamMusic.stop()
 		$AudioStreamDeath.play()
@@ -126,9 +142,22 @@ func _on_death_body_entered(body):
 		get_node("Camera2D").set_limit(SIDE_BOTTOM,c_pos+143)
 		velocity.x = 0
 		velocity.y = -150
-		$AnimatedSprite2D.play("idle")
+		$AnimatedSprite2D.play("death")
 		for i in range(30):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
-			
-		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+		
+		if Main.lives != 0:
+			get_child(2).get_child(0).fade_out()
+			await get_tree().create_timer(0.3).timeout
+			get_tree().change_scene_to_file("res://scenes/Level1.tscn")
+		else:
+			Main.coins = 0
+			Main.lives = 3
+			# Put Game Over Animation here
+			get_child(2).get_child(0).fade_out()
+			await get_tree().create_timer(0.5).timeout
+			get_child(2).get_child(0).game_over()
+			$AudioStreamGameOver.play()
+			await get_tree().create_timer(7).timeout
+			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
