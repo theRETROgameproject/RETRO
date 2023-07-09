@@ -15,7 +15,12 @@ var slide_sound = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
+func _ready():
+	var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+	coinlabel.text = "Coins: " + str(Main.coins)
+	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+	livelabel.text = "Lives: " + str(Main.lives)
+	
 func gimmegimmegimmeyourblocks(h,layer):
 	var tilemap = get_parent().get_node("TileMap")
 	var tilemapcoords = tilemap.local_to_map(global_position)
@@ -38,8 +43,12 @@ func coin_collect():
 	if data.a_coords == Vector2i(4,0) && data.s_id == 2:
 		$AudioStreamCoin.play()
 		tilemap.set_cell(1,data.coords,-1)
-		print("test")
-		get_parent().get_parent().cointer()
+		
+		# Handles global coin count
+		Main.coins += 1
+		print("Godot Hurensohn")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
 	
 func flag():
 	# var tilemap = get_parent().get_node("TileMap")
@@ -63,7 +72,7 @@ func flag():
 		$AnimatedSprite2D.play("default")
 		await get_tree().create_timer(4).timeout
 		velocity.x = 0
-		get_tree().root.get_child(0).switch_level("res://scenes/Level2.tscn")
+		get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		
 func _physics_process(delta):
 	coinspawn()
@@ -131,5 +140,15 @@ func _on_death_body_entered(body):
 			await get_tree().create_timer(0.08).timeout
 			velocity.y += gravity*0.02
 		
+		# Handles global live count
 		print("test")
-		Main.death()
+		Main.lives -= 1
+		if Main.lives != 0:
+			get_tree().change_scene_to_file("res://scenes/Level1.tscn")
+		else:
+			Main.coins = 0
+			Main.lives = 3
+			# Put Game Over Animation here
+			# $AudioStreamGameOver.play()
+			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+			

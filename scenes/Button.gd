@@ -2,5 +2,5 @@ extends Button
 
 
 func _on_pressed():
-	Main.switch_scene("res://scenes/Level1.tscn")
+	get_tree().change_scene_to_file("res://scenes/Level1.tscn")
 	print("lal")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dy3bx6ujergbe"]
+[gd_scene load_steps=27 format=3 uid="uid://dy3bx6ujergbe"]
 
 [ext_resource type="PackedScene" uid="uid://d0xlpfjoa04ej" path="res://scenes/PlayerMario.tscn" id="1_hgup0"]
 [ext_resource type="Shader" path="res://scenes/Wind.gdshader" id="2_x4sth"]
@@ -10,7 +10,6 @@
 [ext_resource type="Shader" path="res://scenes/Flag.gdshader" id="7_a46l8"]
 [ext_resource type="Script" path="res://scenes/Spikes.gd" id="8_3ih5d"]
 [ext_resource type="Script" path="res://scenes/TileMap.gd" id="8_dqog0"]
-[ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="11_p3oph"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcvxx"]
 shader = ExtResource("3_cj5q2")
@@ -817,7 +816,7 @@ texture_filter = 3
 [node name="PlayerMario" parent="." instance=ExtResource("1_hgup0")]
 z_index = 1
 texture_filter = 3
-position = Vector2(4183, -177)
+position = Vector2(3890, -29)
 slide_on_ceiling = false
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -901,7 +900,5 @@ shape = SubResource("RectangleShape2D_4aaf2")
 [node name="1x2v6" type="CollisionShape2D" parent="Death"]
 position = Vector2(3840, -8)
 shape = SubResource("RectangleShape2D_4aaf2")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("11_p3oph")]
 
 [connection signal="body_entered" from="Death" to="PlayerMario" method="_on_death_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0xlpfjoa04ej"]
+[gd_scene load_steps=33 format=3 uid="uid://d0xlpfjoa04ej"]
 
 [ext_resource type="Script" path="res://script/PlayerMario.gd" id="1_eg0uh"]
 [ext_resource type="Texture2D" uid="uid://7txa1gi6iqo0" path="res://sprites/Mario/Character/Mario_death.png" id="2_7hqik"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://tt73xuw68xng" path="res://audio/RETRO Won.ogg" id="8_lr1xg"]
 [ext_resource type="AudioStream" uid="uid://b5u8hd7nu48k1" path="res://audio/RETRO Jump.ogg" id="9_dkh5l"]
 [ext_resource type="AudioStream" uid="uid://rfbbxblil5o2" path="res://audio/RETRO Slide.ogg" id="10_ld7xg"]
+[ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="13_cjxo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
 size = Vector2(9, 15)
@@ -223,3 +224,5 @@ volume_db = 12.0
 
 [node name="AudioStreamSlide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ld7xg")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("13_cjxo5")]
