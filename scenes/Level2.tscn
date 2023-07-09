@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://chgukf3k03ql3"]
+[gd_scene load_steps=58 format=3 uid="uid://chgukf3k03ql3"]
 
 [ext_resource type="Shader" path="res://scenes/Wind.gdshader" id="1_hleyi"]
 [ext_resource type="Texture2D" uid="uid://dqhmi2woayj54" path="res://sprites/Zelda/Blocks/background_spritesheet.png" id="2_jr4nl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c1knoa1y07a3a" path="res://sprites/Mario/Blocks/background_spritesheet.png" id="8_uy4ck"]
 [ext_resource type="Texture2D" uid="uid://lay0hpg6or3l" path="res://sprites/Zelda/Blocks/Todesberg.png" id="9_pesrg"]
 [ext_resource type="Texture2D" uid="uid://bctcoc082aejt" path="res://sprites/Zelda/Link/PhantomRunning.png" id="10_2b08a"]
+[ext_resource type="Shader" path="res://scenes/Torch.gdshader" id="10_6ksuk"]
 [ext_resource type="Script" path="res://scenes/Gegner.gd" id="10_71qq6"]
 [ext_resource type="Script" path="res://scenes/Spikes.gd" id="11_67hxr"]
 [ext_resource type="Shader" path="res://scenes/Gegner.gdshader" id="11_g5nx4"]
@@ -1393,6 +1394,9 @@ sources/5 = SubResource("TileSetAtlasSource_6yidc")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eh6wf"]
 size = Vector2(2731, 553)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1auq"]
+shader = ExtResource("10_6ksuk")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iv2kb"]
 shader = ExtResource("11_g5nx4")
 
@@ -1602,13 +1606,92 @@ layer_2/tile_data = PackedInt32Array(-327592, 65536, 0, -262056, 65536, 1, -1965
 position = Vector2(3446.5, -26.5)
 shape = SubResource("RectangleShape2D_eh6wf")
 
+[node name="Torches" type="Node" parent="TileMap"]
+
+[node name="ColorRect" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 2479.0
+offset_top = -34.0
+offset_right = 2559.0
+offset_bottom = 46.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 2592.0
+offset_top = -66.0
+offset_right = 2672.0
+offset_bottom = 14.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 2846.0
+offset_top = -64.0
+offset_right = 2926.0
+offset_bottom = 16.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 3136.0
+offset_top = -31.0
+offset_right = 3216.0
+offset_bottom = 49.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 4142.0
+offset_top = -3.0
+offset_right = 4222.0
+offset_bottom = 77.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 4224.0
+offset_top = -2.0
+offset_right = 4304.0
+offset_bottom = 78.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="TileMap/Torches"]
+show_behind_parent = true
+top_level = true
+material = SubResource("ShaderMaterial_k1auq")
+offset_left = 4433.0
+offset_top = -15.0
+offset_right = 4513.0
+offset_bottom = 65.0
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
 [node name="PlayerLink" parent="." instance=ExtResource("6_3ltwx")]
 
 [node name="Gegner" type="Node" parent="."]
 
 [node name="Gegner1" type="CharacterBody2D" parent="Gegner"]
 z_index = 1
-position = Vector2(208, 64)
+position = Vector2(575, 64)
 script = ExtResource("10_71qq6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner1"]
@@ -1616,6 +1699,126 @@ material = SubResource("ShaderMaterial_iv2kb")
 sprite_frames = SubResource("SpriteFrames_oomxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner1"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner2" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(914, 64)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner2"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner2"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner3" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(1404, 64)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner3"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner3"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner4" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(2554, 0)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner4"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner4"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner5" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(2925, -34)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner5"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner5"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner6" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(3475, -14)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner6"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner6"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner7" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(3936, 48)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner7"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner7"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner8" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(4169, 26)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner8"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner8"]
+position = Vector2(-0.5, 0.499992)
+scale = Vector2(1, 1.01778)
+shape = SubResource("RectangleShape2D_fx1me")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Gegner9" type="CharacterBody2D" parent="Gegner"]
+z_index = 1
+position = Vector2(4280, 26)
+script = ExtResource("10_71qq6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gegner/Gegner9"]
+material = SubResource("ShaderMaterial_iv2kb")
+sprite_frames = SubResource("SpriteFrames_oomxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner9"]
 position = Vector2(-0.5, 0.499992)
 scale = Vector2(1, 1.01778)
 shape = SubResource("RectangleShape2D_fx1me")
