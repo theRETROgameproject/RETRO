@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://chgukf3k03ql3"]
+[gd_scene load_steps=59 format=3 uid="uid://chgukf3k03ql3"]
 
 [ext_resource type="Shader" path="res://scenes/Wind.gdshader" id="1_hleyi"]
 [ext_resource type="Texture2D" uid="uid://dqhmi2woayj54" path="res://sprites/Zelda/Blocks/background_spritesheet.png" id="2_jr4nl"]
@@ -1397,6 +1397,9 @@ size = Vector2(2731, 553)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k1auq"]
 shader = ExtResource("10_6ksuk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imqpk"]
+size = Vector2(48, 48)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iv2kb"]
 shader = ExtResource("11_g5nx4")
 
@@ -1685,7 +1688,14 @@ offset_bottom = 65.0
 size_flags_horizontal = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="Exit" type="Area2D" parent="TileMap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Exit"]
+position = Vector2(4664, 40)
+shape = SubResource("RectangleShape2D_imqpk")
+
 [node name="PlayerLink" parent="." instance=ExtResource("6_3ltwx")]
+position = Vector2(4493, 21)
 
 [node name="Gegner" type="Node" parent="."]
 
@@ -1833,4 +1843,5 @@ shape = SubResource("RectangleShape2D_iw57j")
 
 [connection signal="body_entered" from="TileMap/Dungeon" to="PlayerLink" method="_on_dungeon_body_entered"]
 [connection signal="body_exited" from="TileMap/Dungeon" to="PlayerLink" method="_on_dungeon_body_exited"]
+[connection signal="body_entered" from="TileMap/Exit" to="PlayerLink" method="_on_exit_body_entered"]
 [connection signal="body_entered" from="Death" to="PlayerLink" method="_on_death_body_entered"]
