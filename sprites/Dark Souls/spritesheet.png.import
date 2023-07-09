@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm41dxi7851as"
-path="res://.godot/imported/SoulsBogenRechteEckeUnten.png-bd0029446da7cc8e0ff8a3b7cc455e11.ctex"
+uid="uid://dwhm8xhhh0bfa"
+path="res://.godot/imported/spritesheet.png-ab131913aafcdc3ce104d463d814e889.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Dark Souls/SoulsBogenRechteEckeUnten.png"
-dest_files=["res://.godot/imported/SoulsBogenRechteEckeUnten.png-bd0029446da7cc8e0ff8a3b7cc455e11.ctex"]
+source_file="res://sprites/Dark Souls/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-ab131913aafcdc3ce104d463d814e889.ctex"]
 
 [params]
 

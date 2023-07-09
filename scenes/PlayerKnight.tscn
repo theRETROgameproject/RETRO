@@ -1,0 +1,280 @@
+[gd_scene load_steps=28 format=3 uid="uid://ccepxlkb45hxa"]
+
+[ext_resource type="Script" path="res://scenes/PlayerKnight.gd" id="1_gdf6h"]
+[ext_resource type="Texture2D" uid="uid://cqg17p0bcfnau" path="res://sprites/Dark Souls/Elden Ring - Knight - dead.png" id="2_vuf7o"]
+[ext_resource type="Texture2D" uid="uid://dgd7udg6laeb0" path="res://sprites/Dark Souls/Elden Ring - Knight - hit.png" id="3_omxd2"]
+[ext_resource type="Texture2D" uid="uid://4a1sw1dkib16" path="res://sprites/Dark Souls/Elden Ring - Knight - all moves.png" id="4_gu8tn"]
+[ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="5_22gtf"]
+[ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="6_gofho"]
+[ext_resource type="AudioStream" uid="uid://bxled1flu6xr0" path="res://audio/RETRO Overworld.ogg" id="6_o4isj"]
+[ext_resource type="AudioStream" uid="uid://dp51x54gwct0g" path="res://audio/RETRO Death.ogg" id="7_bdnu0"]
+[ext_resource type="AudioStream" uid="uid://tt73xuw68xng" path="res://audio/RETRO Won.ogg" id="8_lr1xg"]
+[ext_resource type="FontFile" uid="uid://ttjyhhvfcjh3" path="res://sprites/Mono10_v0.95/Mono10 Regular.ttf" id="8_yoy6v"]
+[ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="13_cjxo5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbt20"]
+size = Vector2(9, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77f1"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq4s7"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbgmc"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mr21"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bvaq"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhydt"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le0yt"]
+atlas = ExtResource("4_gu8tn")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2fes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vuf7o")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_omxd2")
+}],
+"loop": true,
+"name": &"death",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n77f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq4s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbgmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mr21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bvaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhydt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le0yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uby"]
+shader = ExtResource("5_22gtf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fqtv"]
+font = ExtResource("8_yoy6v")
+font_size = 64
+font_color = Color(0.843137, 0.780392, 0, 0)
+outline_size = 6
+outline_color = Color(0.568627, 0.517647, 0, 0)
+
+[sub_resource type="Animation" id="Animation_nni3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game Over:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.843137, 0.780392, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Game Over:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.568627, 0.517647, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5vjpl"]
+resource_name = "fade_to_black"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_co5kg"]
+resource_name = "fade_to_norma"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7lxg0"]
+resource_name = "game_over"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game Over:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.843137, 0.780392, 0, 0), Color(0.843137, 0.780392, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game Over:label_settings:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.568627, 0.517647, 0, 0), Color(0.568627, 0.517647, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4lsg"]
+_data = {
+"RESET": SubResource("Animation_nni3g"),
+"fade_to_black": SubResource("Animation_5vjpl"),
+"fade_to_normal": SubResource("Animation_co5kg"),
+"game_over": SubResource("Animation_7lxg0")
+}
+
+[node name="PlayerKnight" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_gdf6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_nbt20")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_c2fes")
+frame_progress = 0.842372
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 3
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.997173, 1.00956)
+process_callback = 0
+limit_left = -144
+limit_right = 4496
+limit_bottom = 190
+limit_smoothed = true
+position_smoothing_speed = 60.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
+drag_left_margin = 0.42
+drag_top_margin = 0.5
+drag_right_margin = 0.42
+drag_bottom_margin = 0.5
+editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("6_gofho")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_r0uby")
+offset_top = 216.0
+offset_right = 480.0
+offset_bottom = 288.0
+
+[node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
+offset_right = 480.0
+offset_bottom = 288.0
+color = Color(0, 0, 0, 1)
+
+[node name="Game Over" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 120.0
+offset_top = 105.0
+offset_right = 372.0
+offset_bottom = 180.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_8fqtv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_w4lsg")
+}
+
+[node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_o4isj")
+volume_db = -10.0
+autoplay = true
+
+[node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bdnu0")
+
+[node name="AudioStreamWon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lr1xg")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("13_cjxo5")]
