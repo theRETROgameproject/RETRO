@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ccepxlkb45hxa"]
+[gd_scene load_steps=31 format=3 uid="uid://ccepxlkb45hxa"]
 
 [ext_resource type="Script" path="res://scenes/PlayerKnight.gd" id="1_gdf6h"]
 [ext_resource type="Texture2D" uid="uid://cqg17p0bcfnau" path="res://sprites/Dark Souls/Elden Ring - Knight - dead.png" id="2_vuf7o"]
@@ -236,24 +236,20 @@ drag_bottom_margin = 0.5
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-visible = false
 script = ExtResource("6_gofho")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_r0uby")
 offset_top = 216.0
 offset_right = 480.0
 offset_bottom = 288.0
 
 [node name="Black" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
 offset_right = 480.0
 offset_bottom = 288.0
 color = Color(0, 0, 0, 1)
 
 [node name="MrWhite" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
 offset_right = 480.0
 offset_bottom = 288.0
 color = Color(1, 1, 1, 0)
@@ -263,11 +259,6 @@ libraries = {
 "": SubResource("AnimationLibrary_w4lsg")
 }
 
-<<<<<<< HEAD
-[node name="MrWhite" type="ColorRect" parent="Camera2D/CanvasLayer"]
-offset_right = 480.0
-offset_bottom = 288.0
-
 [node name="Dungeon" type="CanvasLayer" parent="Camera2D"]
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Dungeon"]
@@ -275,8 +266,6 @@ material = SubResource("ShaderMaterial_0dit3")
 offset_right = 480.0
 offset_bottom = 288.0
 
-=======
->>>>>>> 97c8dfd (gh)
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_egnc3")
 autoplay = true
