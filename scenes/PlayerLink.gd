@@ -6,10 +6,17 @@ const ACCELERATION = 1500
 const ACCELERATION_AIR = 800
 const FRICTION = 0.13
 var start = true
+var dead = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+	coinlabel.text = "Coins: " + str(Main.coins)
+	var livelabel = get_child(get_child_count() - 1).get_node("Lives")
+	livelabel.text = "Lives: " + str(Main.lives)
+	
 func enemy():
 	var enemy = get_parent().get_child(2).get_children()
 	for e in enemy:
@@ -116,3 +123,36 @@ func _on_dungeon_body_exited(body):
 		get_node("Camera2D/Dungeon").visible = false
 		$AudioStreamDungeon.stop()
 		$AudioStreamMusic.play()
+
+func _on_death_body_entered(body):
+	print("fuck godot")
+	if body.name == "PlayerLink":
+		dead = true
+		$AudioStreamMusic.stop()
+		$AudioStreamDungeon.stop()
+		$AudioStreamDeath.play()
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,false)
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		var c_pos = get_node("Camera2D").get_screen_center_position().y
+		get_node("Camera2D").set_limit(SIDE_BOTTOM,c_pos+143)
+		velocity.x = 0
+		velocity.y = -150
+		$AnimatedSprite2D.play("death")
+		for i in range(30):
+			await get_tree().create_timer(0.08).timeout
+			velocity.y += gravity*0.02
+		
+		# Handles global live count
+		print("test")
+		Main.lives -= 1
+		if Main.lives != 0:
+			get_tree().change_scene_to_file("res://scenes/Level2.tscn")
+		else:
+			Main.coins = 0
+			Main.lives = 3
+			# Put Game Over Animation here
+			# $AudioStreamGameOver.play()
+			get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+			

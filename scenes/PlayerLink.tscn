@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://c8yl0ku1kr3mx"]
+[gd_scene load_steps=34 format=3 uid="uid://c8yl0ku1kr3mx"]
 
 [ext_resource type="Script" path="res://scenes/PlayerLink.gd" id="1_udd1f"]
 [ext_resource type="Texture2D" uid="uid://b7xs4acxivpl6" path="res://sprites/Zelda/Link/LinkAngriff.png" id="2_adko4"]
 [ext_resource type="Texture2D" uid="uid://dwl46xib28ker" path="res://sprites/Zelda/Link/LunkRunning.png" id="3_oj4xk"]
+[ext_resource type="Texture2D" uid="uid://b2eeh6p33k3gm" path="res://sprites/Zelda/Link/Lunk_death.png" id="3_svpt7"]
 [ext_resource type="Shader" path="res://scenes/SceneShader.gdshader" id="4_dkim8"]
 [ext_resource type="Shader" path="res://scenes/Dungeon.gdshader" id="5_ama3h"]
 [ext_resource type="AudioStream" uid="uid://cony5w4nvm2wg" path="res://audio/RETRO Heroic.ogg" id="6_acc3w"]
@@ -12,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://blfj6dyvxi4wx" path="res://audio/RETRO Lunk at my Rupee.ogg" id="10_ik7vt"]
 [ext_resource type="AudioStream" uid="uid://d2gjhdy88yt50" path="res://audio/RETRO Lunk at my Sword.ogg" id="11_wep2r"]
 [ext_resource type="AudioStream" uid="uid://d2jtm7ghmiq7h" path="res://audio/RETRO Lunkser.ogg" id="12_d3xph"]
+[ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="14_kuhgd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mta7j"]
 size = Vector2(9, 16)
@@ -103,6 +105,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_svpt7")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q1un7")
 }, {
 "duration": 1.0,
@@ -148,6 +158,8 @@ shader = ExtResource("5_ama3h")
 [node name="PlayerLink" type="CharacterBody2D"]
 z_index = 2
 position = Vector2(21, 72)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_udd1f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -156,6 +168,7 @@ shape = SubResource("RectangleShape2D_mta7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pwwve")
+animation = &"death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 3
@@ -216,3 +229,5 @@ stream = ExtResource("11_wep2r")
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_d3xph")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("14_kuhgd")]

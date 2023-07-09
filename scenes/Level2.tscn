@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://chgukf3k03ql3"]
+[gd_scene load_steps=45 format=3 uid="uid://chgukf3k03ql3"]
 
 [ext_resource type="Texture2D" uid="uid://dqhmi2woayj54" path="res://sprites/Zelda/Blocks/background_spritesheet.png" id="2_jr4nl"]
 [ext_resource type="Texture2D" uid="uid://cjls2fu84wvod" path="res://sprites/Zelda/Blocks/environment_spritesheet.png" id="3_7xkpf"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8yl0ku1kr3mx" path="res://scenes/PlayerLink.tscn" id="6_3ltwx"]
 [ext_resource type="Texture2D" uid="uid://bctcoc082aejt" path="res://sprites/Zelda/Link/PhantomRunning.png" id="10_2b08a"]
 [ext_resource type="Script" path="res://scenes/Gegner.gd" id="10_71qq6"]
-[ext_resource type="PackedScene" uid="uid://d0nn0afxbitka" path="res://scenes/canvas_layer.tscn" id="11_eb8w3"]
+[ext_resource type="Script" path="res://scenes/Spikes.gd" id="11_67hxr"]
 [ext_resource type="Shader" path="res://scenes/Gegner.gdshader" id="11_g5nx4"]
 [ext_resource type="Texture2D" uid="uid://ccs6kuriy6y1o" path="res://sprites/Zelda/Link/PhantomTodesanimation.png" id="13_5doa3"]
 
@@ -661,6 +661,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fx1me"]
 size = Vector2(10, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw57j"]
+size = Vector2(3816, 21)
+
 [node name="Level 2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -700,4 +703,9 @@ frame_progress = 0.927544
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gegner/Gegner1"]
 shape = SubResource("RectangleShape2D_fx1me")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("11_eb8w3")]
+[node name="Death" type="Area2D" parent="."]
+script = ExtResource("11_67hxr")
+
+[node name="HÖLLE" type="CollisionShape2D" parent="Death"]
+position = Vector2(2502, 197)
+shape = SubResource("RectangleShape2D_iw57j")
