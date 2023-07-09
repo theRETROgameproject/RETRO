@@ -1691,11 +1691,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Exit" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Exit"]
+visible = false
 position = Vector2(4664, 40)
 shape = SubResource("RectangleShape2D_imqpk")
 
 [node name="PlayerLink" parent="." instance=ExtResource("6_3ltwx")]
-position = Vector2(4493, 21)
+position = Vector2(17, 69)
 
 [node name="Gegner" type="Node" parent="."]
 
