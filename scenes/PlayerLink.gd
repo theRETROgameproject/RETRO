@@ -60,29 +60,31 @@ func enemycoin(e):
 func coin_collect():
 	var tilemap = get_parent().get_node("TileMap")
 	var data = gimmegimmegimmeyourblocks(0,0)
-	if data.a_coords == Vector2i(0,0) && data.s_id == 2:
-		$AudioStreamRupee.play()
-		tilemap.set_cell(1,data.coords,-1)
-		
-		# Handles global coin count
-		Main.coins += 5
-		print("Godot Hurensohn x5")
-		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
-		coinlabel.text = "Coins: " + str(Main.coins)
+	
 		
 	if data.a_coords == Vector2i(0,1) && data.s_id == 2:
 		$AudioStreamRupee.play()
-		tilemap.set_cell(1,data.coords,-1)
+		tilemap.set_cell(0,data.coords,-1)
 		
 		# Handles global coin count
 		Main.coins += 1
 		print("Godot Hurensohn")
 		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
 		coinlabel.text = "Coins: " + str(Main.coins)
+		
+	if data.a_coords == Vector2i(0,0) && data.s_id == 2:
+		$AudioStreamRupee.play()
+		tilemap.set_cell(0,data.coords,-1)
+		
+		# Handles global coin count
+		Main.coins += 5
+		print("Godot Hurensohn x5")
+		var coinlabel = get_child(get_child_count() - 1).get_node("Label")
+		coinlabel.text = "Coins: " + str(Main.coins)
 	
 	if data.a_coords == Vector2i(1,1) && data.s_id == 2:
 		$AudioStreamRupee.play()
-		tilemap.set_cell(1,data.coords,-1)
+		tilemap.set_cell(0,data.coords,-1)
 		
 		# Handles global coin count
 		Main.coins += 20
@@ -112,7 +114,7 @@ func anime():
 	
 	
 func _physics_process(delta):
-    coin_collect()
+	coin_collect()
 
 	if $AnimatedSprite2D.animation_finished:
 		anime()
