@@ -816,7 +816,7 @@ texture_filter = 3
 [node name="PlayerMario" parent="." instance=ExtResource("1_hgup0")]
 z_index = 1
 texture_filter = 3
-position = Vector2(-24, 40)
+position = Vector2(-26, 40)
 slide_on_ceiling = false
 
 [node name="TileMap" type="TileMap" parent="."]

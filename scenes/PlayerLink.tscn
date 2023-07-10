@@ -375,4 +375,3 @@ stream = ExtResource("12_d3xph")
 stream = ExtResource("16_jh4jr")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("14_kuhgd")]
-visible = false

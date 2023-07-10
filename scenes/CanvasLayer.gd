@@ -9,6 +9,8 @@ func fade_out():
 func you_died():
 	$AnimationPlayer.play("you_dies")
 
+func game_over():
+	$AnimationPlayer.play("game_over")
 func completed():
 	$AnimationPlayer.play("completed")
 func blitz():
